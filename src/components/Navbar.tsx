@@ -91,7 +91,6 @@ const Navbar = () => {
     { name: "About", href: "#about" },
     { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
-    { name: "Experience", href: "#experience" },
     { name: "Flyers", href: "#posters" },
     { name: "Contact", href: "#contact" },
   ];
@@ -173,7 +172,7 @@ const Navbar = () => {
           >
             <div className="ml-2">
               <a
-                href="https://drive.google.com/file/d/13sT38haaEyeer0A-SJeqAVRGsHEnaGC1/view?usp=sharing" // <-- Replace with your actual Google Drive resume link
+                 // href="https://drive.google.com/file/d/13sT38haaEyeer0A-SJeqAVRGsHEnaGC1/view?usp=sharing" // <-- Replace with your actual Google Drive resume link
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -301,7 +300,7 @@ const Navbar = () => {
                   <div className="flex items-center justify-between mb-6 ">
                     <div className="flex space-x-10">
                       <a
-                        href="https://www.linkedin.com/in/adarshanurag/"
+                        href="https://www.linkedin.com/in/adarshAnkit/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
@@ -310,7 +309,7 @@ const Navbar = () => {
                         <Linkedin size={20} />
                       </a>
                       <a
-                        href="https://github.com/Anuragspace"
+                        href="https://github.com/Ankitspace"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
@@ -319,7 +318,7 @@ const Navbar = () => {
                         <Github size={20} />
                       </a>
                       <a
-                        href="https://www.instagram.com/anurag__adarsh/"
+                        href="https://www.instagram.com/Ankit__adarsh/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
@@ -329,7 +328,7 @@ const Navbar = () => {
                       </a>
                       {/* Add Behance icon here */}
                       <a
-                        href="https://www.behance.net/anuragadarsh1"
+                        href="https://www.behance.net/Ankitadarsh1"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"

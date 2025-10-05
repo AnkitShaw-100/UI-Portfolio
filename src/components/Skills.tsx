@@ -127,7 +127,6 @@ const Skills = () => {
     { name: "User Research", icon: <MousePointer className="h-5 w-5" /> },
     { name: "Wireframing", icon: <Layout className="h-5 w-5" /> },
     { name: "Adobe Photoshop", icon: <Layers className="h-5 w-5" /> },
-    { name: "Adobe Illustrator", icon: <Brush className="h-5 w-5" /> },
     { name: "Prototyping", icon: <Code2 className="h-5 w-5" /> },
     { name: "Interaction Design", icon: <Sparkles className="h-5 w-5" /> },
     { name: "Design Systems", icon: <Palette className="h-5 w-5" /> },

@@ -14,7 +14,7 @@ export const HeroImage = () => {
           <div className="absolute inset-0 bg-gradient-to-br from-blue-400/40 to-[#3E40EF]/30 z-10 mix-blend-overlay"></div>
           
           <img 
-            src="\images\anurag.webp" 
+            src="\images\Ankit.webp" 
             alt="Ankit Shaw Potrailt image" 
             fetchPriority="high"
             className="w-full h-full object-cover z-20 relative hero-image"

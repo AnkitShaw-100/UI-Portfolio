@@ -5,7 +5,6 @@ import Hero from "@/components/Hero";
 import About from "@/components/about";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
-import Experience from "@/components/Experience";
 import Posters from "@/components/Posters";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -15,7 +14,6 @@ import { LazyMotion, domAnimation } from "framer-motion";
 import { Element } from "react-scroll";
 
 // Memoize components for better performance
-const MemoizedExperience = memo(Experience);
 const MemoizedPosters = memo(Posters);
 const MemoizedContact = memo(Contact);
 const MemoizedFooter = memo(Footer);
@@ -59,7 +57,6 @@ const Index = () => {
         <Element name="about"><About /></Element>
         <Element name="skills"><Skills /></Element>
         <Element name="projects"><Projects /></Element>
-        <MemoizedExperience />
         <section id="posters">
           <MemoizedPosters />
         </section>

@@ -5,7 +5,6 @@ import BubblingHearts from "./BubblingHearts";
 import AnimatedWord from "./AnimatedWord";
 import { FaGithub } from "react-icons/fa";
 import { IoLogoLinkedin } from "react-icons/io5";
-import { RiInstagramFill } from "react-icons/ri";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBehance } from "@fortawesome/free-brands-svg-icons";
 
@@ -21,7 +20,7 @@ const Footer = () => {
   
   const handleShareClick = () => {
     // Copy to clipboard and show tooltip
-    navigator.clipboard.writeText("https://anuragadarsh.in");
+    navigator.clipboard.writeText("https://shawfolio.vercel.app/");
     setShowShareTooltip(true);
     setTimeout(() => setShowShareTooltip(false), 3000);
   };
@@ -30,7 +29,6 @@ const Footer = () => {
     { name: "About", href: "#about" },
     { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
-    { name: "Experience", href: "#experience" },
     { name: "Posters", href: "#posters" },
     { name: "Contact", href: "#contact" },
   ];
@@ -44,10 +42,9 @@ const Footer = () => {
   );
   
   const socialLinks = [
-    { name: "Behance", icon: (props) => <FontAwesomeIcon icon={faBehance} {...props} />, href: "https://www.behance.net/anuragadarsh1" },
-    { name: "Github", icon: (props) => <FaGithub {...props} />, href: "https://github.com/Anuragspace" },
-    { name: "LinkedIn", icon: (props) => <IoLogoLinkedin {...props} />, href: "https://www.linkedin.com/in/adarshanurag/" },
-    { name: "Instagram", icon: (props) => <RiInstagramFill {...props} />, href: "https://www.instagram.com/anurag__adarsh/" },
+    { name: "Behance", icon: (props) => <FontAwesomeIcon icon={faBehance} {...props} />, href: "https://www.behance.net/ankitshaw20" },
+    { name: "Github", icon: (props) => <FaGithub {...props} />, href: "https://github.com/AnkitShaw-100" },
+    { name: "LinkedIn", icon: (props) => <IoLogoLinkedin {...props} />, href: "https://www.linkedin.com/in/ankit-shaw-884b0728a/" },
   ];
 
   const scrollToTop = () => {
@@ -57,7 +54,7 @@ const Footer = () => {
     });
   };
 
-  const impactText = "Let's Design Experiences That Make an Impact! 🤝";
+  const impactText = "Let's Design Experiences That Make an Impact! ";
   const words = impactText.split(' ');
 
   return (
@@ -104,7 +101,7 @@ const Footer = () => {
                         navigator.share({
                           title: 'Ankit Shaw Portfolio',
                           text: 'Check out my portfolio showcasing UI/UX design work',
-                          url: 'https://anuragadarsh.in',
+                          url: 'https://Ankitadarsh.in',
                         })
                         .catch(err => {
                           console.error('Share failed:', err);
@@ -127,7 +124,7 @@ const Footer = () => {
                     <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs py-2 px-4 rounded-lg shadow-lg">
                       <div className="flex items-center space-x-1">
                         <GlobeIcon size={12} />
-                        <span>anuragadarsh.in copied!</span>
+                        <span>Ankitadarsh.in copied!</span>
                       </div>
                       <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 rotate-45 w-2 h-2 bg-black"></div>
                     </div>
@@ -185,7 +182,7 @@ const Footer = () => {
                   {/* Bubbling hearts animation */}
                   <BubblingHearts isAnimating={isHeartAnimating} />
                 </span> 
-                by Anurag
+                by Ankit
               </div>
             </div>
           </div>
