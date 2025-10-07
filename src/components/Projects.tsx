@@ -14,6 +14,16 @@ interface Project {
   image: string;
   tags: string[];
   link: string;
+  role?: string[];
+  tools?: string[];
+  category?: string;
+  impact?: string;
+  problem?: string;
+  solution?: string;
+  designProcess?: string[];
+  designElements?: string[];
+  finalDesign?: string[];
+  figmaEmbedUrl?: string;
 }
 
 const ProjectCard = memo(({ project, index }: { project: Project; index: number }) => {
@@ -211,12 +221,12 @@ const Projects = () => {
     },
 
     {
-      id: "cabsync",
-      title: "CabSync – Ride Together",
+      id: "toofoody",
+      title: "TooFoody – Food Ordering Platform",
       year: "2025",
-      description: "Easily find and share cabs with fellow students heading to the same destination. Save money, travel safely, and reduce your carbon footprint—all in one tap.",
-      image: "/images/wb3.mp4",
-      tags: ["App UI/UX", "UI Design", "Prototyping"],
+      description: "TooFoody is a vibrant food-ordering and marketing site focused on high-impact hero imagery, promotional offers, and easy ordering flows. The design highlights specials, product cards, and reviews to increase orders and engagement.",
+      image: "/images/toofoody-home.png",
+      tags: ["UI Design", "E-commerce", "Food Delivery"],
       link: "#",
     }
   ];
