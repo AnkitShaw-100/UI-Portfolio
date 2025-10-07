@@ -23,6 +23,44 @@ const ProjectCard = memo(({ project, index }: { project: Project; index: number 
     amount: 0.1,
     margin: "0px 0px -10% 0px"
   });
+  const videoRef = React.useRef<HTMLVideoElement | null>(null);
+  const lastScrollY = React.useRef<number>(typeof window !== 'undefined' ? window.scrollY : 0);
+  const scrollDirection = React.useRef<'down' | 'up'>('down');
+
+  React.useEffect(() => {
+    if (!project.image.endsWith('.mp4') || !videoRef.current) return;
+
+    const handleScroll = () => {
+      const current = window.scrollY;
+      scrollDirection.current = current > lastScrollY.current ? 'down' : 'up';
+      lastScrollY.current = current;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (!entry) return;
+
+        // Only play when element intersects the viewport with 30% from bottom and user is scrolling down
+        if (entry.isIntersecting && scrollDirection.current === 'down') {
+          videoRef.current?.play().catch(() => {});
+        } else {
+          // pause when it leaves or when user scrolls up into it
+          videoRef.current?.pause();
+        }
+      },
+      { root: null, rootMargin: '0px 0px -30% 0px', threshold: 0 }
+    );
+
+    observer.observe(videoRef.current);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [project.image]);
 
   return (
     <motion.div
@@ -34,10 +72,6 @@ const ProjectCard = memo(({ project, index }: { project: Project; index: number 
     >
       <motion.div 
         className="group overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-3 md:p-5 bg-white relative"
-        whileHover={{ 
-          scale: 1.01,
-          transition: { duration: 0.2 }
-        }}
       >
         <div className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-4`}>
           <div 
@@ -116,12 +150,13 @@ const ProjectCard = memo(({ project, index }: { project: Project; index: number 
           <div className="w-full md:w-[60%] h-[300px] sm:h-[400px] overflow-hidden rounded-xl md:mx-0 mt-2 md:mt-0 order-first md:order-none">
             {project.image.endsWith('.mp4') ? (
               <video
+                ref={videoRef}
                 src={project.image}
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 rounded-xl"
-                autoPlay
                 loop
                 muted
                 playsInline
+                preload="metadata"
                 title={project.title}
               />
             ) : (

@@ -18,10 +18,10 @@ const Posters = () => {
     loop: true,
     align: "center",
     skipSnaps: false,
-    dragFree: true, // Enable drag-free scrolling for smoother interaction
+    // Disable dragFree so Embla snaps smoothly between slides
+    dragFree: false,
     containScroll: "keepSnaps",
     startIndex: 1,
-    duration: 20, // Faster animation for more responsive feel
   });
 
   const [activeIndex, setActiveIndex] = useState(1);
@@ -56,33 +56,93 @@ const Posters = () => {
     },
     {
       id: 2,
-      title: "Portfolio Launch Poster",
-      description: "A clean and catchy design for portfolio launch poster",
+      title: "Sustainalbe Evet Poster",
+      description: "Approaching problems with fun and creativity leads to unique and enjoyable solutions.",
       image: "/images/Landing2.png",
     },
     {
       id: 3,
+      title: "Portfolio Launch Poster",
+      description: "A clean and catchy design for portfolio launch poster",
+      image: "/images/Landing3.png",
+    },
+    {
+      id: 4,
       title: "Sustainalbe Evet Poster",
       description: "Approaching problems with fun and creativity leads to unique and enjoyable solutions.",
-      image: "/images/Landing3.png",
+      image: "/images/Landing4.png",
+    },
+        {
+      id: 5,
+      title: "Sustainalbe Evet Poster",
+      description: "Approaching problems with fun and creativity leads to unique and enjoyable solutions.",
+      image: "/images/Landing5.png",
+    },
+        {
+      id: 6,
+      title: "Sustainalbe Evet Poster",
+      description: "Approaching problems with fun and creativity leads to unique and enjoyable solutions.",
+      image: "/images/Landing6.png",
+    },
+        {
+      id: 7,
+      title: "Sustainalbe Evet Poster",
+      description: "Approaching problems with fun and creativity leads to unique and enjoyable solutions.",
+      image: "/images/Landing7.png",
+    },
+        {
+      id: 8,
+      title: "Sustainalbe Evet Poster",
+      description: "Approaching problems with fun and creativity leads to unique and enjoyable solutions.",
+      image: "/images/Landing8.png",
     }
   ];
 
-  // Modified auto-scroll logic for better performance
+  // Auto-scroll with pause on interaction and smooth transitions
   useEffect(() => {
     if (!emblaApi || !isVisible) return;
-    
-    // Setup auto scroll with longer interval
-    const autoScrollInterval = setInterval(() => {
-      if (!emblaApi.canScrollNext()) {
-        emblaApi.scrollTo(0); // Force loop if at the end
-      } else {
-        emblaApi.scrollNext();
+
+    let intervalId: number | null = null;
+
+    const startAuto = () => {
+      if (intervalId) return;
+      intervalId = window.setInterval(() => {
+        if (!emblaApi) return;
+        if (!emblaApi.canScrollNext()) {
+          emblaApi.scrollTo(0);
+        } else {
+          emblaApi.scrollNext();
+        }
+      }, 3000);
+    };
+
+    const stopAuto = () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = null;
       }
-    }, 5000); // Longer interval for smoother performance
-    
+    };
+
+    startAuto();
+
+    emblaApi.on("pointerDown", stopAuto);
+    emblaApi.on("pointerUp", startAuto);
+
+    // Use emblaApi.rootNode() to attach mouseenter/mouseleave
+    const rootNode = emblaApi.rootNode ? emblaApi.rootNode() : null;
+    if (rootNode) {
+      rootNode.addEventListener("mouseenter", stopAuto);
+      rootNode.addEventListener("mouseleave", startAuto);
+    }
+
     return () => {
-      clearInterval(autoScrollInterval);
+      stopAuto();
+      emblaApi.off("pointerDown", stopAuto);
+      emblaApi.off("pointerUp", startAuto);
+      if (rootNode) {
+        rootNode.removeEventListener("mouseenter", stopAuto);
+        rootNode.removeEventListener("mouseleave", startAuto);
+      }
     };
   }, [emblaApi, isVisible]);
   
