@@ -12,24 +12,24 @@ import { OptimizedImage } from "@/components/OptimizedImage"; // <-- Add this im
 
 const projectsData = [
   // Mock data for projects
-{
-  id: "croxy.io",
-  title: "Croxy.io – Marketing Agency Website",
-  year: "2025",
-  description: "I designed a vibrant, conversion-focused website for Croxy.io, a creative marketing agency. The goal was to craft a visually engaging, modern interface that communicates clarity, confidence, and creativity. The design emphasizes bold typography, smooth layouts, and clear call-to-actions, guiding visitors through the brand’s services and vision effortlessly. Every section was built to establish trust and highlight the agency’s dynamic marketing approach.",
-  image: "/images/croxy-detailed-page.mp4",
-  tags: ["UI Design", "Web Design", "Brand Identity"],
-  role: ["UI/UX Designer"],
-  tools: ["Figma"],
-  category: "Marketing Website Design",
-  impact: "Enhanced visual engagement and clarity, leading to stronger brand perception and improved visitor interaction across the site.",
-  problem: "The client needed a modern and visually strong digital presence that reflects their creative energy while effectively showcasing their marketing expertise.",
-  solution: "Designed a playful yet professional marketing website using bold colors, clear hierarchy, and interactive visuals. Focused on crafting an intuitive flow that highlights services and drives user action.",
-  designProcess: ["/images/croxy-process.webp"],
-  designElements: ["/images/croxy-elements.webp"],
-  finalDesign: ["/images/croxy-final.webp"],
-  figmaEmbedUrl: "https://embed.figma.com/design/EXAMPLE_ID/Croxy.io-Marketing-Website?node-id=0-1&embed-host=share"
-},
+  {
+    id: "croxy.io",
+    title: "Croxy.io – Marketing Agency Website",
+    year: "2025",
+    description: "I designed a vibrant, conversion-focused website for Croxy.io, a creative marketing agency. The goal was to craft a visually engaging, modern interface that communicates clarity, confidence, and creativity. The design emphasizes bold typography, smooth layouts, and clear call-to-actions, guiding visitors through the brand’s services and vision effortlessly. Every section was built to establish trust and highlight the agency’s dynamic marketing approach.",
+    image: "/images/croxy-detailed-page-1.mp4",
+    tags: ["UI Design", "Web Design", "Brand Identity"],
+    role: ["UI/UX Designer"],
+    tools: ["Figma"],
+    category: "Marketing Website Design",
+    impact: "Enhanced visual engagement and clarity, leading to stronger brand perception and improved visitor interaction across the site.",
+    problem: "The client needed a modern and visually strong digital presence that reflects their creative energy while effectively showcasing their marketing expertise.",
+    solution: "Designed a playful yet professional marketing website using bold colors, clear hierarchy, and interactive visuals. Focused on crafting an intuitive flow that highlights services and drives user action.",
+    designProcess: ["/images/croxy-process.png"],
+    designElements: ["/images/croxy-resources.png"],
+    finalDesign: ["/images/croxy-final.png"],
+    figmaEmbedUrl: "https://www.figma.com/design/1R3WoU0DhdyVj6F19JivCW/Ankit?node-id=6-939&t=oYIAKhqFLZwPAJDJ-1"
+  },
 
   {
     id: "campusmart",
@@ -49,7 +49,7 @@ const projectsData = [
     designProcess: ["/images/campusp.webp"],
     designElements: ["/images/campuse.webp"],
     finalDesign: ["/images/campusf.webp"],
-    figmaEmbedUrl:"https://embed.figma.com/design/avUzpH48JMLJM6D6UQENzu/Campus-Mart-UI?node-id=0-1&embed-host=share",
+    figmaEmbedUrl: "https://embed.figma.com/design/avUzpH48JMLJM6D6UQENzu/Campus-Mart-UI?node-id=0-1&embed-host=share",
   },
   {
     id: "cabsync",
@@ -68,7 +68,7 @@ const projectsData = [
     designProcess: ["/images/cabp.webp"],
     designElements: ["/images/cabe.webp"],
     finalDesign: ["/images/cabf.webp"],
-    figmaEmbedUrl:"https://embed.figma.com/design/9ntR9q4rd91iv22GhVrGnX/CAB-SYNC-UI?node-id=0-1&embed-host=share",
+    figmaEmbedUrl: "https://embed.figma.com/design/9ntR9q4rd91iv22GhVrGnX/CAB-SYNC-UI?node-id=0-1&embed-host=share",
   },
   {
     id: "imaginum",
@@ -100,6 +100,7 @@ const ProjectDetail = () => {
   const [project, setProject] = useState<any>(null);
   const [nextProject, setNextProject] = useState<any>(null);
   
+
   useEffect(() => {
     const controlNavbar = () => {
       if (window.scrollY > lastScrollY && isVisible) {
@@ -119,7 +120,7 @@ const ProjectDetail = () => {
       const currentProject = projectsData.find(p => p.id === id);
       if (currentProject) {
         setProject(currentProject);
-        
+
         const currentIndex = projectsData.findIndex(p => p.id === id);
         const nextIndex = (currentIndex + 1) % projectsData.length;
         setNextProject(projectsData[nextIndex]);
@@ -130,7 +131,6 @@ const ProjectDetail = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [id]);
-
   if (!project) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -147,7 +147,7 @@ const ProjectDetail = () => {
       value: project.tools.map(tool => ({
         name: tool,
         icon: tool.toLowerCase().includes('figma') ? <Figma className="h-5 w-5" /> :
-              tool.toLowerCase().includes('react') ? <Code2 className="h-5 w-5" /> : null
+          tool.toLowerCase().includes('react') ? <Code2 className="h-5 w-5" /> : null
       }))
     }
   ];
@@ -155,7 +155,7 @@ const ProjectDetail = () => {
   return (
     <div className="min-h-screen bg-white text-black">
       <ProjectPageHeader />
-      
+
       {/* Banner Section */}
       <section className="relative pt-20 w-full">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -189,7 +189,7 @@ const ProjectDetail = () => {
                 )}
 
                 <div className="absolute bottom-0 left-0 p-6 md:p-8 bg-gradient-to-t from-black/80 to-transparent w-full">
-                  <motion.h1 
+                  <motion.h1
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
@@ -211,15 +211,15 @@ const ProjectDetail = () => {
             <h2 className="text-3xl font-bold mb-8 font-manrope">Project Overview</h2>
             <div className="text-lg md:text-4xl font-medium leading-relaxed text-gray-700">
               <DesktopTextReveal className="hidden md:block" lineIndex={0} totalLines={1}>
-              {project.description}              
+                {project.description}
               </DesktopTextReveal>
               <MobileTextReveal className="block md:hidden" lineIndex={0} totalLines={1}>
-              {project.description}     
+                {project.description}
               </MobileTextReveal>
             </div>
           </div>
         </div>
-        
+
         <div className="container mx-auto px-6 mt-12">
           <div className="w-full h-px bg-gray-100"></div>
         </div>
@@ -229,7 +229,7 @@ const ProjectDetail = () => {
       <section className="mt-1 mb-3 md:mt-2 md:mb-6">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <ProblemSolutionRow 
+            <ProblemSolutionRow
               problem={project.problem}
               solution={project.solution}
             />
@@ -260,7 +260,7 @@ const ProjectDetail = () => {
                 />
               </div>
             </div>
-            
+
             <div>
               <h2 className="text-3xl font-bold mb-8 font-manrope text-center">Design Elements</h2>
               <div className="aspect-video rounded-lg overflow-hidden w-full">
@@ -284,13 +284,16 @@ const ProjectDetail = () => {
             </div>
             {project.figmaEmbedUrl && (
               <div>
-                <h2 className="text-3xl font-bold mb-8 font-manrope text-center">Figma File</h2>
-                <div className="w-full aspect-video rounded-lg overflow-hidden">
-                  <iframe
-                    src={project.figmaEmbedUrl}
-                    allowFullScreen
-                    className="w-full h-full border-0"
-                  ></iframe>
+                <h2 className="text-3xl font-bold mb-4 font-manrope text-center">Figma File</h2>
+                <div className="mt-3 text-center">
+                  <a
+                    href={project.figmaEmbedUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-3 py-2 rounded-md bg-[#3E40EF] text-white text-sm hover:opacity-95"
+                  >
+                    Open design in Figma
+                  </a>
                 </div>
               </div>
             )}
@@ -302,17 +305,17 @@ const ProjectDetail = () => {
       <section className="py-12 border-t border-gray-100">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center max-w-6xl mx-auto">
-            <Link 
-              to="/#projects" 
+            <Link
+              to="/#projects"
               className="flex items-center text-gray-700 hover:text-[#3E40EF] transition-colors font-medium font-manrope"
             >
               <ArrowLeft className="mr-2 h-4 w-4" />
               <span>Back to Projects</span>
             </Link>
-            
+
             {nextProject && (
-              <Link 
-                to={`/projects/${nextProject.id}`} 
+              <Link
+                to={`/projects/${nextProject.id}`}
                 className="flex items-center text-[#3E40EF] hover:text-[#3E40EF]/80 transition-colors font-medium font-manrope"
               >
                 <span>Next Project</span>

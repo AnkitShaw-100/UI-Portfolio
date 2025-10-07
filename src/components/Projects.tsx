@@ -4,7 +4,7 @@ import { BorderBeam, RainbowButton, WhiteRainbowButton } from "@/features/shared
 import { AnimatedGridPattern } from "@/components/AnimatedGridPattern";
 import { motion, LazyMotion, domAnimation, useInView } from "framer-motion";
 import { Link } from "react-router-dom";
-import { OptimizedImage } from "./OptimizedImage"; 
+import { OptimizedImage } from "./OptimizedImage";
 
 interface Project {
   id: string;
@@ -59,7 +59,7 @@ const ProjectCard = memo(({ project, index }: { project: Project; index: number 
           }
 
           if (scrollDirection.current === 'down') {
-            videoRef.current?.play().catch(() => {});
+            videoRef.current?.play().catch(() => { });
           }
         } else {
           // pause when it leaves or when user scrolls up into it
@@ -85,49 +85,46 @@ const ProjectCard = memo(({ project, index }: { project: Project; index: number 
       transition={{ duration: 0.4, delay: index * 0.1 }}
       className="w-full"
     >
-      <motion.div 
+      <motion.div
         className="group overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-3 md:p-5 bg-white relative"
       >
         <div className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-4`}>
-          <div 
-            className={`relative w-full md:w-[40%] p-4 md:p-6 flex flex-col justify-between rounded-xl overflow-hidden ${
-              index % 2 === 0 
-                ? 'bg-[#fafafa] text-gray-800' 
+          <div
+            className={`relative w-full md:w-[40%] p-4 md:p-6 flex flex-col justify-between rounded-xl overflow-hidden ${index % 2 === 0
+                ? 'bg-[#fafafa] text-gray-800'
                 : 'bg-[#3E40EF] text-white'
-            }`}
+              }`}
           >
             <div>
               <div className="mb-3">
-                <span 
-                  className={`block text-sm mb-1 font-medium ${
-                    index % 2 === 0 ? 'text-[#3E40EF]' : 'text-blue-100'
-                  }`}
+                <span
+                  className={`block text-sm mb-1 font-medium ${index % 2 === 0 ? 'text-[#3E40EF]' : 'text-blue-100'
+                    }`}
                 >
                   {project.year}
                 </span>
                 <h3 className="text-xl font-bold md:text-2xl">{project.title}</h3>
               </div>
-              
+
               <p className={`mb-4 ${index % 2 === 0 ? 'text-gray-600' : 'text-blue-100'} text-sm md:text-base`}>
                 {project.description}
               </p>
-              
+
               <div className="mb-4 flex flex-wrap gap-2">
                 {project.tags.map((tag, i) => (
-                  <span 
-                    key={i} 
-                    className={`rounded-full px-2 py-1 text-xs font-medium ${
-                      index % 2 === 0 
-                        ? 'bg-gray-100 text-gray-700' 
+                  <span
+                    key={i}
+                    className={`rounded-full px-2 py-1 text-xs font-medium ${index % 2 === 0
+                        ? 'bg-gray-100 text-gray-700'
                         : 'bg-blue-100/20 text-white'
-                    }`}
+                      }`}
                   >
                     {tag}
                   </span>
                 ))}
               </div>
             </div>
-            
+
             {index === 0 || index === 2 ? (
               <div className="relative w-fit">
                 <Link
@@ -147,23 +144,22 @@ const ProjectCard = memo(({ project, index }: { project: Project; index: number 
                 </Link>
               </div>
             )}
-            
-            <div 
-              className={`absolute -bottom-16 -right-16 w-32 h-32 rounded-full opacity-0 group-hover:opacity-10 transition-all duration-500 transform scale-0 group-hover:scale-100 ${
-                index % 2 === 0 ? 'bg-[#3E40EF]' : 'bg-white'
-              }`}
+
+            <div
+              className={`absolute -bottom-16 -right-16 w-32 h-32 rounded-full opacity-0 group-hover:opacity-10 transition-all duration-500 transform scale-0 group-hover:scale-100 ${index % 2 === 0 ? 'bg-[#3E40EF]' : 'bg-white'
+                }`}
             />
 
-            <BorderBeam 
-              colorFrom={index % 2 === 0 ? "#3E40EF" : "#ffffff"} 
-              colorTo={index % 2 === 0 ? "#6366F1" : "#D6BCFA"} 
-              size={32} 
+            <BorderBeam
+              colorFrom={index % 2 === 0 ? "#3E40EF" : "#ffffff"}
+              colorTo={index % 2 === 0 ? "#6366F1" : "#D6BCFA"}
+              size={32}
               duration={8}
               delay={index * 0.5}
               reverse={index % 2 !== 0}
             />
           </div>
-          
+
           <div className="w-full md:w-[60%] h-[300px] sm:h-[400px] overflow-hidden rounded-xl md:mx-0 mt-2 md:mt-0 order-first md:order-none">
             {project.image.endsWith('.mp4') ? (
               <video
@@ -195,15 +191,15 @@ ProjectCard.displayName = "ProjectCard";
 
 const Projects = () => {
   const projects: Project[] = [
-{
-  id: "croxy.io",
-  title: "Croxy.io – Marketing Agency Website",
-  year: "2025",
-  description: "Designed and built a vibrant, conversion-focused marketing website featuring bold typography, playful highlights, and a clear call-to-action flow. The site delivers a seamless user experience with strong visual hierarchy, smooth layouts, and modern responsiveness to effectively promote services and client credibility.",
-  image: "/images/croxy-home-2.png",
-  tags: ["UI Design", "Web Development", "Marketing Website"],
-  link: "#"
-},
+    {
+      id: "croxy.io",
+      title: "Croxy.io – Marketing Agency Website",
+      year: "2025",
+      description: "Designed and built a vibrant, conversion-focused marketing website featuring bold typography, playful highlights, and a clear call-to-action flow. The site delivers a seamless user experience with strong visual hierarchy, smooth layouts, and modern responsiveness to effectively promote services and client credibility.",
+      image: "/images/croxy-home.png",
+      tags: ["UI Design", "Web Development", "Marketing Website"],
+      link: "#"
+    },
 
     {
       id: "campusmart",
@@ -243,9 +239,9 @@ const Projects = () => {
           className="absolute inset-x-[60%] inset-y-[40%] w-[60%] h-[60%] -skew-y-12 text-[#3E40EF]/80 [mask-image:radial-gradient(600px_circle_at_center,white,transparent)]"
         />
 
-        
 
-        
+
+
 
         <div className="container-custom">
           <div className="mb-8 md:mb-12 text-center">
@@ -255,13 +251,13 @@ const Projects = () => {
             </p>
             <div className="mx-auto mt-4 h-1 w-24 bg-[#3E40EF]"></div>
           </div>
-          
+
           <div className="grid grid-cols-1 gap-6 md:gap-10">
             {projects.map((project, index) => (
-              <ProjectCard 
-                key={project.id} 
-                project={project} 
-                index={index} 
+              <ProjectCard
+                key={project.id}
+                project={project}
+                index={index}
               />
             ))}
           </div>
