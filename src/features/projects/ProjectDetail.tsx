@@ -45,7 +45,7 @@ const projectsData = [
     solution: "Courser introduces a visually driven, student-friendly interface emphasizing simplicity, engagement, and trust. Its structured layout and warm visuals keep users focused while improving overall navigation flow.",
     designProcess: ["/images/courser-process.png"],
     designElements: ["/images/courser-elements.png"],
-    finalDesign: ["/images/courser-final-1.png"],
+    finalDesign: ["/images/courser-final.png"],
     figmaEmbedUrl: "https://www.figma.com/design/1R3WoU0DhdyVj6F19JivCW/Ankit?node-id=75-380&t=NgCI69pKouKykJ4x-1",
   },
 
@@ -105,9 +105,9 @@ const ProjectDetail = () => {
     }
   }, [id]);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [id]);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, [id]);
   if (!project) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -294,34 +294,8 @@ const ProjectDetail = () => {
           </div>
         </div>
       </section>
-
-      {/* Navigation Section */}
-      <section className="py-12 border-t border-gray-100">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center max-w-6xl mx-auto">
-            <Link
-              to="/#projects"
-              className="flex items-center text-gray-700 hover:text-[#3E40EF] transition-colors font-medium font-manrope"
-            >
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              <span>Back to Projects</span>
-            </Link>
-
-            {nextProject && (
-              <Link
-                to={`/projects/${nextProject.id}`}
-                className="flex items-center text-[#3E40EF] hover:text-[#3E40EF]/80 transition-colors font-medium font-manrope"
-              >
-                <span>Next Project</span>
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            )}
-          </div>
-        </div>
-      </section>
-
       <Footer />
-      <HomeButton />
+      {/* <HomeButton /> */}
     </div>
   );
 };
