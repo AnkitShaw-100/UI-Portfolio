@@ -24,10 +24,10 @@ const TerminalContent = () => {
 
         <div className="space-y-6 text-[#7e7e7e] font-display text-base leading-relaxed pr-2">
           <p className="text-gray-700">
-            My design approach transforms complexity into intuitive digital experiences that users genuinely connect with. Through methodical research and creative problem-solving, I uncover core needs and translate them into seamless interfaces. Each design decision balances aesthetic appeal with functional purpose, creating solutions that feel natural and effortless.
+            Hi — I’m Ankit, a 3rd-year IT student at IEM who loves UI/UX. I focus on building clean, usable interfaces by starting with research, iterating quickly, and shipping practical solutions that people enjoy using.
           </p>
           <p className="text-gray-700">
-            At Imaginum, I've elevated products by prioritizing user engagement across touchpoints. My CSED work created design systems that amplified technology's social impact. I bridge human needs and technological possibilities through empathetic, purposeful design.
+            I’ve built three full websites and dozens of landing pages, including projects and prototypes like Courser, Croxy.ai, and a Swiggy clone. My work centers on responsive layouts, fast performance, and thoughtful visual design.
           </p>
 
           {/* Interactive terminal with user input */}

@@ -146,7 +146,7 @@ const ProjectCard = memo(({ project, index }: { project: Project; index: number 
             )}
 
             <div
-              className={`absolute -bottom-16 -right-16 w-32 h-32 rounded-full opacity-0 group-hover:opacity-10 transition-all duration-500 transform scale-0 group-hover:scale-100 ${index % 2 === 0 ? 'bg-[#3E40EF]' : 'bg-white'
+              className={`absolute -bottom-16 -right-16 w-32 h-32 rounded-full opacity-0 group-hover:opacity-10 transition-opacity duration-500 ${index % 2 === 0 ? 'bg-[#3E40EF]' : 'bg-white'
                 }`}
             />
 
@@ -166,7 +166,7 @@ const ProjectCard = memo(({ project, index }: { project: Project; index: number 
                 ref={videoRef}
                 // source will be set lazily via IntersectionObserver
                 data-src={project.image}
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 rounded-xl"
+                className="h-full w-full object-cover transition-transform duration-500 rounded-xl"
                 loop
                 muted
                 playsInline
@@ -177,7 +177,7 @@ const ProjectCard = memo(({ project, index }: { project: Project; index: number 
               <OptimizedImage
                 src={project.image}
                 alt={project.title}
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 rounded-xl"
+                className="h-full w-full object-cover transition-transform duration-500 rounded-xl"
               />
             )}
           </div>
@@ -200,16 +200,16 @@ const Projects = () => {
       tags: ["UI Design", "Web Development", "Marketing Website"],
       link: "#"
     },
-
     {
-      id: "campusmart",
-      title: "Campus Mart – Your College Marketplace",
+      id: "courser",
+      title: "Courser – Online Learning Platform",
       year: "2025",
-      description: "Discover a trusted marketplace built for students. Buy, sell, or exchange books, electronics, essentials, and more—all within your campus community. Easy to use, safe to connect, made for you.",
-      image: "/images/web2.mp4",
-      tags: ["Product Design", "User Flow", "UI/UX"],
+      description: "An engaging e-learning platform design that blends bold visuals with smooth usability. Courser helps learners explore top-rated online courses, track progress, and connect globally—all in a clean and motivating interface.",
+      image: "/images/courser-home.mp4",
+      tags: ["UI Design", "Web Design", "Landing Page"],
       link: "#",
     },
+
     {
       id: "cabsync",
       title: "CabSync – Ride Together",

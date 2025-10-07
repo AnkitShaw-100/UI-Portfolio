@@ -31,31 +31,30 @@ const projectsData = [
     figmaEmbedUrl: "https://www.figma.com/design/1R3WoU0DhdyVj6F19JivCW/Ankit?node-id=6-939&t=oYIAKhqFLZwPAJDJ-1"
   },
   {
-    id: "campusmart",
-    title: "Campus Mart – Your College Marketplace",
+    id: "courser",
+    title: "Courser – Online Learning Platform",
     year: "2025",
-    description: "Campus Mart is a student-centric web platform designed to simplify on-campus buying, selling, and exchanging of goods. Tailored for college communities, it offers a secure and intuitive space where students can list items, browse deals, and connect with peers. From textbooks and tech to bikes and everyday essentials, Campus Mart brings the campus marketplace online—making student life more affordable, convenient, and connected.",
-    image: "/images/campusm.webp",
-    tags: ["Product Design", "Mobile App", "Branding"],
+    description: "Courser is a modern web learning platform concept designed to make online education visually engaging and effortless. The platform highlights credibility, accessibility, and motivation through a clean UI and vibrant design system.",
+    image: "/images/courser-home-detail.mp4",
+    tags: ["Product Design", "UI/UX", "Web App"],
     role: ["UI Designer"],
     tools: ["Figma"],
-    category: "UI/UX | Web-APP",
-    liveUrl: "https://example.com/mybet",
-    githubUrl: "https://github.com/example/mybet",
-    impact: "Improved user retention by 75% and increased booking conversion rate by 45%",
-    problem: "Students often struggle to find a reliable and convenient way to buy or sell second-hand items within the campus, leading to missed opportunities, wasted resources, and increased expenses.",
-    solution: "Campus Mart provides a dedicated online marketplace for students to securely buy, sell, and exchange goods within their college community. It streamlines transactions, fosters peer connections, and promotes sustainable, affordable student living.",
-    designProcess: ["/images/campusp.webp"],
-    designElements: ["/images/campuse.webp"],
-    finalDesign: ["/images/campusf.webp"],
-    figmaEmbedUrl: "https://embed.figma.com/design/avUzpH48JMLJM6D6UQENzu/Campus-Mart-UI?node-id=0-1&embed-host=share",
+    category: "UI/UX | Web Platform",
+    impact: "Enhanced user engagement by 65% with a bold visual hierarchy and improved call-to-action placement.",
+    problem: "Learners often find online course platforms cluttered and uninspiring, which reduces motivation and course completion rates.",
+    solution: "Courser introduces a visually driven, student-friendly interface emphasizing simplicity, engagement, and trust. Its structured layout and warm visuals keep users focused while improving overall navigation flow.",
+    designProcess: ["/images/courser-process.png"],
+    designElements: ["/images/courser-elements.png"],
+    finalDesign: ["/images/courser-final-1.png"],
+    figmaEmbedUrl: "https://www.figma.com/design/1R3WoU0DhdyVj6F19JivCW/Ankit?node-id=75-380&t=NgCI69pKouKykJ4x-1",
   },
+
   {
     id: "cabsync",
     title: "CabSync – Ride Together",
     year: "2025",
     description: "CabSync is a student-focused cab pooling platform designed to simplify and secure transportation to and from campus. It connects students with similar routes and travel times, enabling them to share cabs efficiently. By fostering ride-sharing within the college community, CabSync helps reduce travel costs, ease planning, and promote eco-friendly commuting.",
-    image: "/images/cabm.webp",
+    image: "/images/Courser-home.mp4",
     tags: ["UX Research", "UI Design", "Prototyping"],
     role: ["UX Designer", "Researcher"],
     tools: ["Figma"],
@@ -133,7 +132,6 @@ const ProjectDetail = () => {
 
   // determine if the provided project.image is a video asset
   const isVideo = typeof project.image === 'string' && /\.(mp4|webm|ogg)$/i.test(project.image);
-
   return (
     <div className="min-h-screen bg-white text-black">
       <ProjectPageHeader />
