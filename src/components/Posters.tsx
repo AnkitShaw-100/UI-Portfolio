@@ -30,18 +30,18 @@ const Posters = () => {
   // Handle active index and optimize loop behavior
   useEffect(() => {
     if (!emblaApi) return;
-    
+
     // Set initial active index
     setActiveIndex(emblaApi.selectedScrollSnap());
-    
+
     // Update active index when selection changes
     const onSelect = () => {
       setActiveIndex(emblaApi.selectedScrollSnap());
     };
-    
+
     // Set up event listeners
     emblaApi.on("select", onSelect);
-    
+
     return () => {
       emblaApi.off("select", onSelect);
     };
@@ -50,52 +50,71 @@ const Posters = () => {
   const posters: Poster[] = [
     {
       id: 1,
-      title: "CSED Website Launch",
-      description: "Design and innovation come together in this launch poster.",
+      title: "Web Developer Portfolio",
+      description: "Vibrant 3D portfolio with floating tech icons and a modern UI.",
       image: "/images/Landing1.png",
     },
     {
       id: 2,
-      title: "Sustainalbe Evet Poster",
-      description: "Approaching problems with fun and creativity leads to unique and enjoyable solutions.",
+      title: "Pizza Website",
+      description: "Fun and creative pizza landing page with an engaging layout.",
       image: "/images/Landing2.png",
     },
     {
       id: 3,
-      title: "Portfolio Launch Poster",
-      description: "A clean and catchy design for portfolio launch poster",
+      title: "Samosawala Food Delivery",
+      description: "Fresh green-themed food site highlighting crispy samosas.",
       image: "/images/Landing3.png",
     },
     {
       id: 4,
-      title: "Sustainalbe Evet Poster",
-      description: "Approaching problems with fun and creativity leads to unique and enjoyable solutions.",
+      title: "Coindeck Cryptocurrency Platform",
+      description: "Dark, sleek crypto platform with 3D Bitcoin and Ethereum visuals.",
       image: "/images/Landing4.png",
     },
-        {
+    {
       id: 5,
-      title: "Sustainalbe Evet Poster",
-      description: "Approaching problems with fun and creativity leads to unique and enjoyable solutions.",
+      title: "Sliced Artisan Bread",
+      description: "Minimal bread brand site with elegant typography and soft tones.",
       image: "/images/Landing5.png",
     },
-        {
+    {
       id: 6,
-      title: "Sustainalbe Evet Poster",
-      description: "Approaching problems with fun and creativity leads to unique and enjoyable solutions.",
+      title: "Pringles Cheddar Cheese Crisps",
+      description: "Dynamic product page with animated flying chips and bold visuals.",
       image: "/images/Landing6.png",
     },
-        {
+    {
       id: 7,
-      title: "Sustainalbe Evet Poster",
-      description: "Approaching problems with fun and creativity leads to unique and enjoyable solutions.",
+      title: "Aviation Drone Military Technology",
+      description: "Professional defense site showcasing advanced drone systems.",
       image: "/images/Landing7.png",
     },
-        {
+    {
       id: 8,
-      title: "Sustainalbe Evet Poster",
-      description: "Approaching problems with fun and creativity leads to unique and enjoyable solutions.",
+      title: "Croxy Marketing Agency",
+      description: "Bright and modern agency site with bold yellow-blue contrasts.",
       image: "/images/Landing8.png",
-    }
+    },
+    {
+      id: 9,
+      title: "Red Bull Sugarfree Energy Drink",
+      description: "Vibrant blue product showcase with e-commerce integration.",
+      image: "/images/Landing9.png",
+    },
+    {
+      id: 10,
+      title: "Frontend Developer",
+      description: "Creative and engaging frontend landing page with clean visuals.",
+      image: "/images/Landing10.png",
+    },
+    {
+      id: 11,
+      title: "7 Wonders Website",
+      description: "Interactive showcase of the world’s seven wonders in a modern layout.",
+      image: "/images/Landing11.png",
+    },
+
   ];
 
   // Auto-scroll with pause on interaction and smooth transitions
@@ -145,7 +164,7 @@ const Posters = () => {
       }
     };
   }, [emblaApi, isVisible]);
-  
+
   return (
     <section ref={postersRef} className="relative bg-gradient-to-b from-white to-gray-50/50 py-8 md:py-16 overflow-hidden">
       {/* Blur effects - extended to cover poster area fully */}
@@ -172,35 +191,35 @@ const Posters = () => {
                 const shouldLoad = isVisible && wrapDistance <= 1;
 
                 return (
-                <motion.div
-                  key={index}
-                  className={`embla__slide flex-[0_0_100%] sm:flex-[0_0_100%] md:flex-[0_0_76%] lg:flex-[0_0_65%] px-1 md:px-2`}
-                  initial={{ scale: 0.9, opacity: 0.5 }}
-                  animate={{
-                    scale: activeIndex === index ? 1 : 0.9,
-                    opacity: activeIndex === index ? 1 : 0.5,
-                  }}
-                  transition={{ duration: 0.4 }}
-                >
-                  <div className="group relative aspect-[4/3] md:aspect-[4/3] lg:aspect-[3/2] rounded-lg md:rounded-xl overflow-hidden bg-gray-50 shadow-md hover:shadow-lg transition-all duration-500 mx-0.5 md:mx-1">
-                    <div className="w-full h-full flex items-center justify-center">
-                      <OptimizedImage
-                        src={poster.image}
-                        alt={poster.title}
-                        shouldLoad={shouldLoad}
-                        className="max-w-full max-h-full object-contain object-center transition-transform duration-500 group-hover:scale-105"
-                      />
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4">
-                        <h4 className="font-semibold text-white text-base md:text-lg mb-1 md:mb-2">
-                          {poster.title}
-                        </h4>
-                        <p className="text-white/80 text-xs md:text-sm">{poster.description}</p>
+                  <motion.div
+                    key={index}
+                    className={`embla__slide flex-[0_0_100%] sm:flex-[0_0_100%] md:flex-[0_0_76%] lg:flex-[0_0_65%] px-1 md:px-2`}
+                    initial={{ scale: 0.9, opacity: 0.5 }}
+                    animate={{
+                      scale: activeIndex === index ? 1 : 0.9,
+                      opacity: activeIndex === index ? 1 : 0.5,
+                    }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    <div className="group relative aspect-[4/3] md:aspect-[4/3] lg:aspect-[3/2] rounded-lg md:rounded-xl overflow-hidden bg-gray-50 shadow-md hover:shadow-lg transition-all duration-500 mx-0.5 md:mx-1">
+                      <div className="w-full h-full flex items-center justify-center">
+                        <OptimizedImage
+                          src={poster.image}
+                          alt={poster.title}
+                          shouldLoad={shouldLoad}
+                          className="max-w-full max-h-full object-contain object-center transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4">
+                          <h4 className="font-semibold text-white text-base md:text-lg mb-1 md:mb-2">
+                            {poster.title}
+                          </h4>
+                          <p className="text-white/80 text-xs md:text-sm">{poster.description}</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                 </motion.div>
+                  </motion.div>
                 );
               })}
             </div>
