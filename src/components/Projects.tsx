@@ -44,8 +44,23 @@ const ProjectCard = memo(({ project, index }: { project: Project; index: number 
         if (!entry) return;
 
         // Only play when element intersects the viewport with 30% from bottom and user is scrolling down
-        if (entry.isIntersecting && scrollDirection.current === 'down') {
-          videoRef.current?.play().catch(() => {});
+        if (entry.isIntersecting) {
+          // lazy-load the video source when the element becomes visible
+          try {
+            if (videoRef.current && !videoRef.current.src) {
+              const dataSrc = (videoRef.current as HTMLVideoElement).dataset?.src;
+              if (dataSrc) {
+                videoRef.current.src = dataSrc;
+                videoRef.current.load();
+              }
+            }
+          } catch (e) {
+            // ignore
+          }
+
+          if (scrollDirection.current === 'down') {
+            videoRef.current?.play().catch(() => {});
+          }
         } else {
           // pause when it leaves or when user scrolls up into it
           videoRef.current?.pause();
@@ -151,12 +166,13 @@ const ProjectCard = memo(({ project, index }: { project: Project; index: number 
             {project.image.endsWith('.mp4') ? (
               <video
                 ref={videoRef}
-                src={project.image}
+                // source will be set lazily via IntersectionObserver
+                data-src={project.image}
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 rounded-xl"
                 loop
                 muted
                 playsInline
-                preload="metadata"
+                preload="none"
                 title={project.title}
               />
             ) : (
