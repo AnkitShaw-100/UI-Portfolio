@@ -113,7 +113,7 @@ const Posters = () => {
         } else {
           emblaApi.scrollNext();
         }
-      }, 1000);
+      }, 2500);
     };
 
     const stopAuto = () => {
@@ -165,7 +165,13 @@ const Posters = () => {
         <div className="relative">
           <div className="embla overflow-hidden" ref={emblaRef}>
             <div className="embla__container flex gap-4 md:gap-8 px-2 md:px-4">
-              {posters.map((poster, index) => (
+              {posters.map((poster, index) => {
+                const distance = Math.abs(activeIndex - index);
+                // allow wrap-around for carousel
+                const wrapDistance = Math.min(distance, posters.length - distance);
+                const shouldLoad = isVisible && wrapDistance <= 1;
+
+                return (
                 <motion.div
                   key={index}
                   className={`embla__slide flex-[0_0_100%] sm:flex-[0_0_100%] md:flex-[0_0_76%] lg:flex-[0_0_65%] px-1 md:px-2`}
@@ -181,6 +187,7 @@ const Posters = () => {
                       <OptimizedImage
                         src={poster.image}
                         alt={poster.title}
+                        shouldLoad={shouldLoad}
                         className="max-w-full max-h-full object-contain object-center transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
@@ -193,8 +200,9 @@ const Posters = () => {
                       </div>
                     </div>
                   </div>
-                </motion.div>
-              ))}
+                 </motion.div>
+                );
+              })}
             </div>
           </div>
 

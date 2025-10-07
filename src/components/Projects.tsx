@@ -130,19 +130,21 @@ const ProjectCard = memo(({ project, index }: { project: Project; index: number 
             
             {index === 0 || index === 2 ? (
               <div className="relative w-fit">
-                <RainbowButton className="mt-5 scale-90 origin-left">
-                  <Link to={`/projects/${project.id}`} className="flex items-center justify-center text-sm w-32">
-                    View Project
-                  </Link>
-                </RainbowButton>
+                <Link
+                  to={`/projects/${project.id}`}
+                  className="mt-5 inline-flex h-11 items-center justify-center rounded-xl px-6 font-medium text-white bg-gradient-to-r from-[#6366F1] to-[#3E40EF] hover:opacity-95 transition-colors"
+                >
+                  View Project
+                </Link>
               </div>
             ) : (
               <div className="relative w-fit">
-                <WhiteRainbowButton className="mt-5 scale-90 origin-left">
-                  <Link to={`/projects/${project.id}`} className="flex items-center justify-center text-sm w-32">
-                    View Project
-                  </Link>
-                </WhiteRainbowButton>
+                <Link
+                  to={`/projects/${project.id}`}
+                  className="mt-5 inline-flex h-11 items-center justify-center rounded-xl px-6 font-medium text-[#3E40EF] bg-white/80 hover:opacity-95 transition-colors"
+                >
+                  View Project
+                </Link>
               </div>
             )}
             
@@ -193,15 +195,16 @@ ProjectCard.displayName = "ProjectCard";
 
 const Projects = () => {
   const projects: Project[] = [
-    {
-      id: "csedvit",
-      title: "CSED VIT – Official Club Website",
-      year: "2024",
-      description: "Designed and developed a modern, interactive, and standout UI with a clean visual hierarchy, smooth transitions, and responsive layouts. Created an engaging user experience to reflect the club’s identity, events, and initiatives across all devices.",
-      image: "/images/web1.mp4",
-      tags: ["UI Design", "UX Design", "Web Development"],
-      link: "https://www.csedvit.com/",
-    },
+{
+  id: "croxy.io",
+  title: "Croxy.io – Marketing Agency Website",
+  year: "2025",
+  description: "Designed and built a vibrant, conversion-focused marketing website featuring bold typography, playful highlights, and a clear call-to-action flow. The site delivers a seamless user experience with strong visual hierarchy, smooth layouts, and modern responsiveness to effectively promote services and client credibility.",
+  image: "/images/croxy-home-2.png",
+  tags: ["UI Design", "Web Development", "Marketing Website"],
+  link: "#"
+},
+
     {
       id: "campusmart",
       title: "Campus Mart – Your College Marketplace",
@@ -216,7 +219,7 @@ const Projects = () => {
       title: "CabSync – Ride Together",
       year: "2025",
       description: "Easily find and share cabs with fellow students heading to the same destination. Save money, travel safely, and reduce your carbon footprint—all in one tap.",
-      image: "/images/web3.mp4",
+      image: "/images/wb3.mp4",
       tags: ["App UI/UX", "UI Design", "Prototyping"],
       link: "#",
     }

@@ -8,6 +8,7 @@ interface OptimizedImageProps {
   className?: string;
   width?: number;
   height?: number;
+  shouldLoad?: boolean;
 }
 
 export const OptimizedImage = memo(({ 
@@ -15,27 +16,31 @@ export const OptimizedImage = memo(({
   alt, 
   className,
   width,
-  height
+  height,
+  shouldLoad
 }: OptimizedImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    // If consumer didn't opt into delayed loading, behave as before
+    if (shouldLoad === false) return;
+
     // Reset on src change
     setIsLoaded(false);
     setError(false);
-    
+
     // Preload image
     const img = new Image();
     img.src = src;
     img.onload = () => setIsLoaded(true);
     img.onerror = () => setError(true);
-    
+
     return () => {
       img.onload = null;
       img.onerror = null;
     };
-  }, [src]);
+  }, [src, shouldLoad]);
 
   return (
     <div className={cn("relative overflow-hidden", className)}>
@@ -52,7 +57,7 @@ export const OptimizedImage = memo(({
         </div>
       ) : (
         <img
-          src={src}
+          src={shouldLoad === false ? undefined : src}
           alt={alt}
           className={cn(
             "w-full h-full object-cover transition-opacity duration-300 gpu-accelerated will-change-opacity",

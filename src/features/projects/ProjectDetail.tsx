@@ -12,26 +12,25 @@ import { OptimizedImage } from "@/components/OptimizedImage"; // <-- Add this im
 
 const projectsData = [
   // Mock data for projects
-  {
-    id: "csedvit",
-    title: "CSED VIT – Official Club Website",
-    year: "2024",
-    description: "I led the complete redesign of the official CSED VIT website to give the club a bold digital identity. The goal was to create a clean, modern, and standout UI that felt interactive and engaging across devices. I handled the full UX process—research, wireframing, prototyping, and final implementation—focusing on smooth transitions and intuitive navigation. The result is a responsive, scalable platform that effectively showcases our events, teams, and mission.",
-    image: "/images/csedm.webp",
-    tags: ["UI Design", "UX Design", "Web Development"],
-    role: ["Lead Designer"],
-    tools: ["Figma", "VantaJS", "HTML-CSS"],
-    category: "UI/UX Website Design",
-    liveUrl: "https://csedvit.com",
-    githubUrl: "https://github.com/example",
-    impact: "Increased user engagement by 150% and reduced project setup time by 60%",
-    problem: "The current CSED website does not provide an intuitive, comprehensive platform to effectively showcase the club's diverse activities, projects, and events, making it challenging for users to engage and stay updated.",
-    solution: "Design and develop a modern, user-friendly website that highlights CSED's initiatives, events, and projects. The solution will focus on seamless navigation, interactive features, and an attractive layout to enhance engagement.",
-    designProcess: ["/images/csedp.webp"],
-    designElements: ["/images/csede.webp"],
-    finalDesign: ["/images/csedf.webp"],
-    figmaEmbedUrl: "https://embed.figma.com/design/q1REgcRqi7YvprzjqT7nPj/CSED-Website?node-id=0-1&embed-host=share",
-  },
+{
+  id: "croxy.io",
+  title: "Croxy.io – Marketing Agency Website",
+  year: "2025",
+  description: "I designed a vibrant, conversion-focused website for Croxy.io, a creative marketing agency. The goal was to craft a visually engaging, modern interface that communicates clarity, confidence, and creativity. The design emphasizes bold typography, smooth layouts, and clear call-to-actions, guiding visitors through the brand’s services and vision effortlessly. Every section was built to establish trust and highlight the agency’s dynamic marketing approach.",
+  image: "/images/croxy-detailed-page.mp4",
+  tags: ["UI Design", "Web Design", "Brand Identity"],
+  role: ["UI/UX Designer"],
+  tools: ["Figma"],
+  category: "Marketing Website Design",
+  impact: "Enhanced visual engagement and clarity, leading to stronger brand perception and improved visitor interaction across the site.",
+  problem: "The client needed a modern and visually strong digital presence that reflects their creative energy while effectively showcasing their marketing expertise.",
+  solution: "Designed a playful yet professional marketing website using bold colors, clear hierarchy, and interactive visuals. Focused on crafting an intuitive flow that highlights services and drives user action.",
+  designProcess: ["/images/croxy-process.webp"],
+  designElements: ["/images/croxy-elements.webp"],
+  finalDesign: ["/images/croxy-final.webp"],
+  figmaEmbedUrl: "https://embed.figma.com/design/EXAMPLE_ID/Croxy.io-Marketing-Website?node-id=0-1&embed-host=share"
+},
+
   {
     id: "campusmart",
     title: "Campus Mart – Your College Marketplace",
@@ -150,12 +149,6 @@ const ProjectDetail = () => {
         icon: tool.toLowerCase().includes('figma') ? <Figma className="h-5 w-5" /> :
               tool.toLowerCase().includes('react') ? <Code2 className="h-5 w-5" /> : null
       }))
-    },
-    { 
-      label: "Website", 
-      value: "Visit Website",
-      isLink: true,
-      linkUrl: project.liveUrl
     }
   ];
 
@@ -166,14 +159,35 @@ const ProjectDetail = () => {
       {/* Banner Section */}
       <section className="relative pt-20 w-full">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="w-full max-w-7xl mx-auto">
-            <div className="overflow-hidden rounded-lg relative shadow-xl w-full">
-              <div className="h-[55vh] md:h-[70vh] lg:h-[75vh]">
-                <OptimizedImage
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover"
-                />
+          {/* Narrower central column so the video fits with less horizontal cropping */}
+          <div className="w-full max-w-4xl mx-auto">
+            <div className="overflow-hidden rounded-lg relative w-full">
+              <div className="h-[55vh] md:h-[70vh] lg:h-[75vh] relative">
+                {project.image && project.image.toString().toLowerCase().endsWith('.mp4') ? (
+                  <div className="w-full h-full relative">
+                    <video
+                      controls
+                      muted
+                      playsInline
+                      autoPlay
+                      loop
+                      preload="metadata"
+                      poster={project.designElements?.[0] || project.finalDesign?.[0]}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      title={project.title}
+                    >
+                      <source src={project.image} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                ) : (
+                  <OptimizedImage
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                  />
+                )}
+
                 <div className="absolute bottom-0 left-0 p-6 md:p-8 bg-gradient-to-t from-black/80 to-transparent w-full">
                   <motion.h1 
                     initial={{ opacity: 0, y: 20 }}
