@@ -30,7 +30,6 @@ const projectsData = [
     finalDesign: ["/images/croxy-final.png"],
     figmaEmbedUrl: "https://www.figma.com/design/1R3WoU0DhdyVj6F19JivCW/Ankit?node-id=6-939&t=oYIAKhqFLZwPAJDJ-1"
   },
-
   {
     id: "campusmart",
     title: "Campus Mart – Your College Marketplace",
@@ -69,27 +68,6 @@ const projectsData = [
     designElements: ["/images/cabe.webp"],
     finalDesign: ["/images/cabf.webp"],
     figmaEmbedUrl: "https://embed.figma.com/design/9ntR9q4rd91iv22GhVrGnX/CAB-SYNC-UI?node-id=0-1&embed-host=share",
-  },
-  {
-    id: "imaginum",
-    title: "Imaginum Website",
-    year: "2025",
-    description: "The Imaginum website was crafted to reflect the studio’s creative and tech-driven identity. Designed with a clean, minimal aesthetic, it offers an immersive experience that captures the brand’s essence. The layout emphasizes clarity, storytelling, and smooth transitions to showcase services, team, and selected work. I led the product, UX strategy, and visual direction—ensuring the site feels both modern and purposeful. The result is a high-performance, responsive website that communicates value and builds trust through design",
-    image: "/images/imagim.webp",
-    tags: ["UI/UX", "Wireframe", "User Research"],
-    role: ["Lead Designer"],
-    tools: ["Saas WebDesign", "UI/UX", "Figma"],
-    category: "Website UI/UX Design",
-    liveUrl: "https://vercel.imaginum.app",
-    githubUrl: "https://github.com/example/imaginum",
-    impact: "Increased average session duration by 145% and reduced bounce rate by 35%",
-    problem: "The team needed a bold digital presence to differentiate Imaginum in a competitive creative tech space, while effectively communicating its unique design-driven approach, values, and growing portfolio of innovative projects.",
-    solution: "Designed and developed a visually striking, interactive website using clean UI, smooth micro-interactions, and strategic content flow—creating an engaging user journey that showcases Imaginum’s expertise, story, and service offerings with clarity and flair",
-    designProcess: ["/images/imagip.webp"],
-    designElements: ["/images/imagie.webp"],
-    finalDesign: ["/images/imagif.webp"],
-    figmaEmbedUrl: "https://embed.figma.com/design/msCrgpYsRe3bsrGf4wJkld/Imaginum-Website-UI?node-id=0-1&embed-host=share",
-
   }
 ];
 
@@ -181,13 +159,13 @@ const ProjectDetail = () => {
 
                   {isVideo && (
                     <>
-                      {!videoLoaded && (
+                      {/* {!videoLoaded && (
                         <OptimizedImage
                           src={project.finalDesign?.[0]}
                           alt={`${project.title} poster`}
                           className="absolute inset-0 w-full h-full object-cover"
                         />
-                      )}
+                      )} */}
 
                       <video
                         controls
@@ -196,7 +174,6 @@ const ProjectDetail = () => {
                         autoPlay
                         loop
                         preload="metadata"
-                        poster={project.finalDesign?.[0]}
                         className={`absolute inset-0 w-full h-full object-cover ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
                         title={project.title}
                         onLoadedData={() => setVideoLoaded(true)}
