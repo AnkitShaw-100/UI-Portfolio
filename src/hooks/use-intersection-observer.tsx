@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef, RefObject } from 'react';
 
 interface IntersectionObserverOptions {
@@ -17,32 +16,32 @@ function useIntersectionObserver<T extends Element>({
   const [isIntersecting, setIsIntersecting] = useState(false);
   const ref = useRef<T>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
-  
+
   useEffect(() => {
     const currentRef = ref.current;
-    
+
     if (!currentRef) return;
-    
+
     // Cleanup previous observer
     if (observerRef.current) {
       observerRef.current.disconnect();
     }
-    
+
     observerRef.current = new IntersectionObserver(
       (entries) => {
         const isElementIntersecting = entries[0].isIntersecting;
-        
+
         setIsIntersecting(isElementIntersecting);
-        
+
         if (once && isElementIntersecting && currentRef) {
           observerRef.current?.unobserve(currentRef);
         }
       },
       { root, rootMargin, threshold }
     );
-    
+
     observerRef.current.observe(currentRef);
-    
+
     return () => {
       if (observerRef.current && currentRef) {
         observerRef.current.unobserve(currentRef);
@@ -50,7 +49,7 @@ function useIntersectionObserver<T extends Element>({
       }
     };
   }, [root, rootMargin, threshold, once]);
-  
+
   return [isIntersecting, ref];
 }
 

@@ -1,4 +1,3 @@
-
 /**
  * Performance optimizations for the application
  * This file contains functions and configurations to improve website performance
@@ -9,14 +8,14 @@ export const cacheDOMElements = () => {
   // Cache footer element since it's frequently accessed in scroll handlers
   if (typeof window !== 'undefined') {
     window._cachedFooter = document.querySelector('footer');
-    
+
     // Update cached elements when DOM changes significantly
     const observer = new MutationObserver(() => {
       window._cachedFooter = document.querySelector('footer');
     });
-    
+
     observer.observe(document.body, { childList: true, subtree: true });
-    
+
     return () => observer.disconnect();
   }
 };
@@ -42,21 +41,21 @@ export const optimizeImageLoading = () => {
 // Improved debounce function with immediate option for smoother interactions
 export const debounce = (func: Function, wait: number, immediate = false) => {
   let timeout: ReturnType<typeof setTimeout> | null = null;
-  
+
   return function executedFunction(...args: any[]) {
     const callNow = immediate && !timeout;
-    
+
     const later = () => {
       timeout = null;
       if (!immediate) func(...args);
     };
-    
+
     if (timeout) {
       clearTimeout(timeout);
     }
-    
+
     timeout = setTimeout(later, wait);
-    
+
     if (callNow) func(...args);
   };
 };

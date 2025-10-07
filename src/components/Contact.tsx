@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Send, Mail, Phone, MapPin, ExternalLink, CheckCircle, User, AtSign, FileText, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -14,25 +13,25 @@ const Contact = () => {
     subject: "",
     message: ""
   });
-  
+
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormState({
       ...formState,
       [e.target.id]: e.target.value
     });
   };
-  
+
   // Update handleSubmit to use EmailJS
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setErrorMessage(null);
-  
+
     emailjs.send(
       "service_qepo5nu",      // Replace with your EmailJS service ID
       "template_d16c59j",     // Replace with your EmailJS template ID
@@ -78,7 +77,7 @@ const Contact = () => {
     const body = encodeURIComponent(`Name: ${formState.name}\nEmail: ${formState.email}\n\n${formState.message}`);
     return `mailto:${to}?subject=${subject}&body=${body}`;
   };
-  
+
   return (
     <section id="contact" className="py-12 bg-gradient-to-b from-white to-gray-50/80">
       <div className="container mx-auto px-4 max-w-6xl">
@@ -86,11 +85,11 @@ const Contact = () => {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Get In Touch</h2>
           <div className="w-24 h-1 bg-accent mx-auto mb-6"></div>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Have a project in mind or want to discuss collaboration opportunities? 
+            Have a project in mind or want to discuss collaboration opportunities?
             I'd love to hear from you and explore how we can work together.
           </p>
         </motion.div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <motion.div
             initial={{ opacity: 0, y: 8 }}
@@ -101,7 +100,7 @@ const Contact = () => {
             {/* Contact Information Card */}
             <div className="bg-white rounded-2xl shadow-sm p-4 md:p-5 border border-gray-100 h-full">
               <h3 className="text-xl font-bold mb-5 text-gray-800">Contact Information</h3>
-              
+
               <div className="space-y-5">
                 {/* Contact info items */}
                 <div className="flex items-center group hover:bg-accent/5 p-2 rounded-lg transition-colors">
@@ -115,7 +114,7 @@ const Contact = () => {
                     </a>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center group hover:bg-accent/5 p-2 rounded-lg transition-colors">
                   <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mr-4 shrink-0 group-hover:bg-accent/20 transition-colors duration-300">
                     <Phone className="text-accent" size={20} />
@@ -127,7 +126,7 @@ const Contact = () => {
                     </a>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center group hover:bg-accent/5 p-2 rounded-lg transition-colors">
                   <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mr-4 shrink-0 group-hover:bg-accent/20 transition-colors duration-300">
                     <MapPin className="text-accent" size={20} />
@@ -156,7 +155,7 @@ const Contact = () => {
                   <span className="text-sm font-medium text-white">Open to Work</span>
                 </div>
               </div>
-              
+
               <ul className="space-y-3 mb-6">
                 <li className="flex items-center text-white/90 group">
                   <div className="w-2 h-2 bg-white rounded-full mr-3 group-hover:w-3 transition-all duration-300"></div>
@@ -171,8 +170,8 @@ const Contact = () => {
                   <span className="group-hover:text-white transition-colors duration-300">Product Design Roles</span>
                 </li>
               </ul>
-              
-              <Button 
+
+              <Button
                 className="w-full bg-white hover:bg-white/90 text-black font-semibold py-2.5 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg"
                 onClick={() => window.open('https://www.linkedin.com/in/ankit-shaw-884b0728a/', '_blank')}
               >

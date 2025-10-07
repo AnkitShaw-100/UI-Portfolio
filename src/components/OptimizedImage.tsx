@@ -1,4 +1,3 @@
-
 import { useState, useEffect, memo } from "react";
 import { cn } from "@/lib/utils";
 
@@ -11,9 +10,9 @@ interface OptimizedImageProps {
   shouldLoad?: boolean;
 }
 
-export const OptimizedImage = memo(({ 
-  src, 
-  alt, 
+export const OptimizedImage = memo(({
+  src,
+  alt,
   className,
   width,
   height,
@@ -45,12 +44,12 @@ export const OptimizedImage = memo(({
   return (
     <div className={cn("relative overflow-hidden", className)}>
       {!isLoaded && !error && (
-        <div 
-          className="absolute inset-0 bg-gray-200 animate-pulse" 
+        <div
+          className="absolute inset-0 bg-gray-200 animate-pulse"
           style={{ width, height }}
         />
       )}
-      
+
       {error ? (
         <div className="flex items-center justify-center w-full h-full bg-gray-100 text-gray-400">
           Unable to load image

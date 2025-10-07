@@ -1,4 +1,3 @@
-
 import React from "react";
 import { ArrowDown, Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -98,10 +97,9 @@ export function SocialDock() {
   }, [prevScrollPos]);
 
   return (
-    <div 
-      className={`fixed left-1/2 transform -translate-x-1/2 z-30 transition-all duration-300 ${
-        visible && !menuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8 pointer-events-none'
-      }`}
+    <div
+      className={`fixed left-1/2 transform -translate-x-1/2 z-30 transition-all duration-300 ${visible && !menuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8 pointer-events-none'
+        }`}
       style={{
         bottom: `${bottom}px`,
         maxWidth: '100vw',
@@ -109,8 +107,8 @@ export function SocialDock() {
         pointerEvents: visible && !menuOpen ? 'auto' : 'none'
       }}
     >
-      <Dock 
-        direction="middle" 
+      <Dock
+        direction="middle"
         className="h-12 px-4 py-1.5 bg-white backdrop-blur-sm border border-gray-100 shadow-md rounded-xl mx-auto w-full"
       >
         <DockIcon>
@@ -160,7 +158,7 @@ export function SocialDock() {
             className="w-8 h-8 text-gray-700 flex items-center justify-center hover:bg-gray-100 transition-all"
             asChild
           >
-            <a href="https://www.behance.net/ankitshaw20" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <a href="https://www.instagram.com/ankitshaw750/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <Icons.instagram className="h-4 w-4" />
             </a>
           </Button>

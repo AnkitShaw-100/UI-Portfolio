@@ -18,7 +18,7 @@ function AnalyticsListener() {
 function App() {
   return (
     <>
-      
+
       <ThemeProvider attribute="class" defaultTheme="light">
         <Router>
           <AnalyticsListener />

@@ -21,17 +21,17 @@ const MemoizedFooter = memo(Footer);
 const Index = () => {
   // Apply performance optimizations
   const { isOptimized } = usePerformanceOptimizations();
-  
+
   // Optimize scrolling with react-scroll
   useEffect(() => {
     // Initialize scrollSpy for detecting active sections
-    Events.scrollEvent.register('begin', () => {});
-    Events.scrollEvent.register('end', () => {});
+    Events.scrollEvent.register('begin', () => { });
+    Events.scrollEvent.register('end', () => { });
     scrollSpy.update();
-    
+
     // Register for scroll events with passive: true for better performance
     window.addEventListener('scroll', scrollSpy.update, { passive: true });
-    
+
     return () => {
       // Clean up scroll events when component unmounts
       Events.scrollEvent.remove('begin');
@@ -51,7 +51,7 @@ const Index = () => {
   return (
     <LazyMotion features={domAnimation}>
       <div className="min-h-screen bg-white">
-        
+
         <Navbar />
         <Hero />
         <Element name="about"><About /></Element>

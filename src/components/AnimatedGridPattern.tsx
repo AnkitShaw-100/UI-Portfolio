@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import {
   ComponentPropsWithoutRef,
   useEffect,
-  useId,        
+  useId,
   useRef,
   useState,
 } from "react";
@@ -66,9 +66,9 @@ export function AnimatedGridPattern({
       currentSquares.map((sq) =>
         sq.id === id
           ? {
-              ...sq,
-              pos: getPos(),
-            }
+            ...sq,
+            pos: getPos(),
+          }
           : sq,
       ),
     );

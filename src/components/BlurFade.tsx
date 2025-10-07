@@ -6,7 +6,7 @@ import {
   UseInViewOptions,
   Variants,
   MotionProps,
-  LazyMotion, 
+  LazyMotion,
   domAnimation
 } from "framer-motion";
 import { useRef, memo } from "react";
@@ -43,13 +43,13 @@ export const BlurFade = memo(({
   ...props
 }: BlurFadeProps) => {
   const ref = useRef(null);
-  const inViewResult = useInView(ref, { 
-    once: true, 
+  const inViewResult = useInView(ref, {
+    once: true,
     margin: inViewMargin,
     amount: 0.2 // Only need to see 20% of the element
   });
   const isInView = !inView || inViewResult;
-  
+
   // Simpler variants without blur for better performance
   const defaultVariants: Variants = {
     hidden: {
@@ -62,9 +62,9 @@ export const BlurFade = memo(({
       opacity: 1,
     },
   };
-  
+
   const combinedVariants = variant || defaultVariants;
-  
+
   return (
     <LazyMotion features={domAnimation}> {/* Load animations only when needed */}
       <AnimatePresence>

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import { 
-  Palette, 
+import {
+  Palette,
   Gem,
   MousePointer,
   Layers,
@@ -30,7 +30,7 @@ const Skills = () => {
   useEffect(() => {
     const slider = sliderRef.current;
     if (!slider) return;
-    
+
     const handleDragStart = (clientX: number) => {
       isDraggingRef.current = true;
       startXRef.current = clientX - slider.offsetLeft;
@@ -38,25 +38,25 @@ const Skills = () => {
       slider.classList.add('dragging');
       document.body.style.cursor = 'grabbing';
     };
-    
+
     const handleDragEnd = () => {
       isDraggingRef.current = false;
       slider.classList.remove('dragging');
       document.body.style.cursor = 'default';
     };
-    
+
     const handleDragMove = (clientX: number) => {
       if (!isDraggingRef.current) return;
       const x = clientX - slider.offsetLeft;
       const walk = (x - startXRef.current) * 2;
       slider.scrollLeft = scrollLeftRef.current - walk;
     };
-    
+
     const handleTouchStart = (e: TouchEvent) => {
       if (e.touches.length !== 1) return;
       handleDragStart(e.touches[0].pageX);
     };
-    
+
     const handleTouchMove = (e: TouchEvent) => {
       if (!isDraggingRef.current || !slider || e.touches.length !== 1) return;
       e.preventDefault();
@@ -64,23 +64,23 @@ const Skills = () => {
       const walk = (x - startXRef.current) * 2;
       slider.scrollLeft = scrollLeftRef.current - walk;
     };
-    
+
     const mouseDownHandler = (e: MouseEvent) => handleDragStart(e.clientX);
     const mouseMoveHandler = (e: MouseEvent) => handleDragMove(e.clientX);
-    
+
     slider.addEventListener('mousedown', mouseDownHandler);
     document.addEventListener('mouseup', handleDragEnd);
     document.addEventListener('mousemove', mouseMoveHandler);
-    
+
     slider.addEventListener('touchstart', handleTouchStart);
     document.addEventListener('touchend', handleDragEnd);
     document.addEventListener('touchmove', handleTouchMove, { passive: false });
-    
+
     return () => {
       slider.removeEventListener('mousedown', mouseDownHandler);
       document.removeEventListener('mouseup', handleDragEnd);
       document.removeEventListener('mousemove', mouseMoveHandler);
-      
+
       slider.removeEventListener('touchstart', handleTouchStart);
       document.removeEventListener('touchend', handleDragEnd);
       document.removeEventListener('touchmove', handleTouchMove);
@@ -98,7 +98,7 @@ const Skills = () => {
 
     const infiniteScroll = () => {
       if (isPaused || !slider) return;
-      
+
       if (slider.scrollLeft >= content.offsetWidth) { // No error now
         slider.scrollLeft = 0; // Reset to start when reaching the clone
       } else {
@@ -140,18 +140,18 @@ const Skills = () => {
 
   return (
     <section id="skills" className="section-padding bg-gray-50 overflow-hidden">
-      
+
       <div className="container-custom">
         <div className="mb-10">
           <h2 className="mb-4">My Skills</h2>
           <div className="w-24 h-1 bg-accent"></div>
         </div>
-        
+
         <div className="relative mb-12 py-6 overflow-hidden" id="skills-carousel">
           <div className="absolute left-0 top-0 h-full w-[15%] bg-gradient-to-r from-gray-50 to-transparent z-10"></div>
           <div className="absolute right-0 top-0 h-full w-[15%] bg-gradient-to-l from-gray-50 to-transparent z-10"></div>
-          
-          <div 
+
+          <div
             ref={sliderRef}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
@@ -165,7 +165,7 @@ const Skills = () => {
           >
             <div className="flex gap-4">
               {technicalSkills.map((skill, index) => (
-                <div 
+                <div
                   key={`${skill.name}-${index}`}
                   className="flex-none bg-white rounded-xl shadow-md p-4 flex items-center gap-3 transform hover:scale-105 transition-transform duration-200"
                   style={{ minWidth: '180px' }}
@@ -179,22 +179,22 @@ const Skills = () => {
             </div>
           </div>
         </div>
-        
+
         <div className="grid grid-cols-12 gap-5">
-          <div 
+          <div
             ref={skillsRef}
             className="col-span-12 md:col-span-5 bg-[#3E40EF] rounded-2xl shadow-md p-7 flex flex-col transform hover:scale-[1.02] transition-all duration-300 hover:shadow-lg group relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-32 -mt-32 group-hover:bg-white/10 transition-all duration-500"></div>
             <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full -ml-24 -mb-24 group-hover:bg-white/10 transition-all duration-500"></div>
-            
+
             <div className="relative z-10 h-full flex flex-col">
               <div className="bg-white/10 w-14 h-14 rounded-xl flex items-center justify-center mb-5 group-hover:bg-white/20 transition-all duration-300">
                 <Palette className="text-white h-7 w-7" />
               </div>
               <h3 className="text-2xl font-bold mb-5 text-white">Design & Development</h3>
               <p className="text-white/90 mb-6">Combining creative design thinking with technical expertise to build intuitive and efficient digital experiences.</p>
-              
+
               <div className="space-y-4 mt-auto">
                 {designSkills.map((skill, index) => (
                   <div key={skill.name}>
@@ -205,7 +205,7 @@ const Skills = () => {
                     <div className="w-full bg-white/10 rounded-full h-2.5 overflow-hidden">
                       <div
                         className="bg-white h-2.5 rounded-full transition-all transform-gpu"
-                        style={{ 
+                        style={{
                           width: isVisible ? `${skill.level}%` : '0%',
                           transitionProperty: 'width, transform',
                           transitionDuration: '2s',
@@ -218,7 +218,7 @@ const Skills = () => {
                   </div>
                 ))}
               </div>
-              
+
               <div className="absolute bottom-6 right-6 grid grid-cols-3 gap-1 opacity-20">
                 {[...Array(9)].map((_, i) => (
                   <div key={i} className="w-1.5 h-1.5 rounded-full bg-white"></div>
@@ -226,13 +226,13 @@ const Skills = () => {
               </div>
             </div>
           </div>
-          
+
           {/* Right column container */}
           <div className="col-span-12 md:col-span-7 grid grid-rows-1 gap-5">
             {/* Interaction Design - Top right box */}
             <div className="bg-[#3E40EF] rounded-2xl shadow-md p-6 transform hover:scale-[1.02] transition-all duration-300 hover:shadow-lg group relative overflow-hidden">
               <div className="absolute -top-20 -right-20 w-40 h-40 bg-white/5 rounded-full group-hover:bg-white/10 transition-all duration-500"></div>
-              
+
               <div className="relative z-10 flex flex-col h-full">
                 <div className="bg-white/10 w-14 h-14 rounded-xl flex items-center justify-center mb-4 group-hover:bg-white/20 transition-all duration-300">
                   <MousePointer className="text-white h-7 w-7" />
@@ -241,7 +241,7 @@ const Skills = () => {
                 <p className="text-white/90 mb-4">Creating intuitive interfaces with smooth transitions and meaningful animations that enhance user experience.</p>
                 <div className="mt-auto flex flex-wrap gap-3">
                   {["Micro-interactions", "Motion Design", "User Flows", "Site Mapping"].map((skill) => (
-                    <span 
+                    <span
                       key={skill}
                       className="px-4 py-2 bg-white/10 rounded-full text-sm font-medium group-hover:bg-white/15 transition-all duration-300 text-white"
                     >
@@ -251,13 +251,13 @@ const Skills = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* Bottom right container for Prototyping and Wireframing */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {/* Prototyping - Bottom left of the right column */}
               <div className="bg-[#3E40EF] rounded-2xl shadow-md p-6 transform hover:scale-[1.02] transition-all duration-300 hover:shadow-lg group relative overflow-hidden">
                 <div className="absolute -top-10 -left-10 w-20 h-20 bg-white/5 rounded-full group-hover:bg-white/10 transition-all duration-500"></div>
-                
+
                 <div className="relative z-10 h-full flex flex-col">
                   <div className="bg-white/10 w-14 h-14 rounded-xl flex items-center justify-center mb-4 group-hover:bg-white/20 transition-all duration-300">
                     <Layers className="text-white h-7 w-7" />
@@ -266,7 +266,7 @@ const Skills = () => {
                   <p className="text-white/90 mb-4">Building interactive prototypes to test and validate design solutions.</p>
                   <div className="mt-auto flex flex-wrap gap-2">
                     {["High-fidelity", "Low-fidelity", "Interactive", "User Testing"].map((skill, index) => (
-                      <span 
+                      <span
                         key={skill}
                         className="px-3 py-1.5 bg-white/10 rounded-full text-sm font-medium group-hover:bg-white/15 transition-all duration-300 text-white"
                       >
@@ -276,11 +276,11 @@ const Skills = () => {
                   </div>
                 </div>
               </div>
-              
+
               {/* Wireframing - Bottom right */}
               <div className="bg-[#3E40EF] min-h-[280px] rounded-2xl shadow-md p-6 transform hover:scale-[1.02] transition-all duration-300 hover:shadow-lg group relative overflow-hidden">
                 <div className="absolute -top-20 -left-20 w-40 h-40 bg-white/5 rounded-full group-hover:bg-white/10 transition-all duration-500"></div>
-                
+
                 <div className="relative z-10 h-full flex flex-col items-center text-center">
                   <p className="text-white/90 mb-3">Creating structural blueprints to establish hierarchy and layout.</p>
                   <h3 className="text-2xl font-bold mb-3 text-white">Wireframing</h3>

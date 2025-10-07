@@ -1,4 +1,3 @@
-
 import React from "react";
 import { ExternalLink, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
@@ -29,7 +28,7 @@ const ProjectDetailsGrid = ({ items, className }: ProjectDetailsGridProps) => {
         >
           <div className="flex flex-col">
             <div className="text-sm text-gray-500 uppercase tracking-wider mb-3 font-manrope">{item.label}</div>
-            
+
             {Array.isArray(item.value) ? (
               <div className="flex flex-wrap gap-3">
                 {item.value.map((val, i) => (
@@ -40,9 +39,9 @@ const ProjectDetailsGrid = ({ items, className }: ProjectDetailsGridProps) => {
                 ))}
               </div>
             ) : item.isLink ? (
-              <a 
-                href={item.linkUrl} 
-                target="_blank" 
+              <a
+                href={item.linkUrl}
+                target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2 bg-[#3E40EF] text-white rounded hover:bg-[#3E40EF]/90 transition-colors"
               >

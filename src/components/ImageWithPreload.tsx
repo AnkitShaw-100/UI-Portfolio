@@ -1,4 +1,3 @@
-
 import { useState, useEffect, memo } from 'react';
 
 interface ImageWithPreloadProps {
@@ -21,9 +20,9 @@ const ImageWithPreload = memo(({ src, alt, className, width, height }: ImageWith
   }, [src]);
 
   return (
-    <img 
-      src={src} 
-      alt={alt} 
+    <img
+      src={src}
+      alt={alt}
       className={`${className} transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
       width={width}
       height={height}

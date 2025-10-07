@@ -1,4 +1,3 @@
-
 import React from "react";
 import InteractiveTerminal from "../InteractiveTerminal";
 
@@ -22,15 +21,15 @@ const TerminalContent = () => {
         <p className="text-[#424242] font-mono text-base mb-2">
           {'<hello world />'}
         </p>
-        
+
         <div className="space-y-6 text-[#7e7e7e] font-display text-base leading-relaxed pr-2">
           <p className="text-gray-700">
-          My design approach transforms complexity into intuitive digital experiences that users genuinely connect with. Through methodical research and creative problem-solving, I uncover core needs and translate them into seamless interfaces. Each design decision balances aesthetic appeal with functional purpose, creating solutions that feel natural and effortless.         
+            My design approach transforms complexity into intuitive digital experiences that users genuinely connect with. Through methodical research and creative problem-solving, I uncover core needs and translate them into seamless interfaces. Each design decision balances aesthetic appeal with functional purpose, creating solutions that feel natural and effortless.
           </p>
           <p className="text-gray-700">
-          At Imaginum, I've elevated products by prioritizing user engagement across touchpoints. My CSED work created design systems that amplified technology's social impact. I bridge human needs and technological possibilities through empathetic, purposeful design. 
-                   </p>
-          
+            At Imaginum, I've elevated products by prioritizing user engagement across touchpoints. My CSED work created design systems that amplified technology's social impact. I bridge human needs and technological possibilities through empathetic, purposeful design.
+          </p>
+
           {/* Interactive terminal with user input */}
           <div className="mt-2 mb-2 w-full max-w-full">
             <InteractiveTerminal className="md:min-w-[400px] w-full font-mono" />

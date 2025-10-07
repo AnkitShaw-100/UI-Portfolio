@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Heart } from 'lucide-react';
@@ -13,7 +12,7 @@ const BubblingHeart: React.FC<HeartProps> = ({ x, delay }) => {
     <motion.div
       className="absolute bottom-0 pointer-events-none will-change-transform"
       initial={{ x, y: 0, opacity: 0, scale: 0 }}
-      animate={{ 
+      animate={{
         y: -80,
         opacity: [0, 1, 0],
         scale: [0.5, 1, 0.5],
@@ -36,7 +35,7 @@ interface BubblingHeartsProps {
 
 const BubblingHearts: React.FC<BubblingHeartsProps> = ({ isAnimating }) => {
   const [hearts, setHearts] = useState<{ id: number; x: number; delay: number }[]>([]);
-  
+
   useEffect(() => {
     if (isAnimating) {
       const newHearts = Array.from({ length: 6 }, (_, i) => ({
@@ -44,17 +43,17 @@ const BubblingHearts: React.FC<BubblingHeartsProps> = ({ isAnimating }) => {
         x: (Math.random() - 0.5) * 40,
         delay: i * 0.04
       }));
-      
+
       setHearts(newHearts);
-      
+
       const timer = setTimeout(() => {
         setHearts([]);
       }, 1000);
-      
+
       return () => clearTimeout(timer);
     }
   }, [isAnimating]);
-  
+
   return (
     <div className="relative">
       <AnimatePresence>

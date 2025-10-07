@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Sparkles } from "lucide-react";
 import { HeroButtons } from "./HeroButtons";
@@ -16,14 +15,14 @@ export const HeroContent = ({ triggerConfetti }: HeroContentProps) => {
           UI/UX Designer & Product Designer
         </div>
         <h1 className="animate-slide-in font-black text-4xl md:text-5xl lg:text-6xl leading-tight" style={{ animationDelay: "0.1s" }}>
-          Crafting Digital 
+          Crafting Digital
           <br />
-          Experiences That 
+          Experiences That
           <br />
           <span className="text-[#3E40EF]">Resonate</span>
         </h1>
         <p className="text-lg md:text-xl text-gray-600 animate-slide-in mt-4" style={{ animationDelay: "0.2s" }}>
-        Crafting intuitive digital experiences that captivate, inspire, and drive meaningful connections.        </p>
+          Crafting intuitive digital experiences that captivate, inspire, and drive meaningful connections.        </p>
         <div className="flex flex-row sm:gap-5 gap-3 sm:pl-2 pt-6 md:pt-6 animate-slide-in" style={{ animationDelay: "0.3s" }}>
           <HeroButtons triggerConfetti={triggerConfetti} />
         </div>

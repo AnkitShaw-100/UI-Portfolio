@@ -99,7 +99,7 @@ const ProjectDetail = () => {
   const { id } = useParams();
   const [project, setProject] = useState<any>(null);
   const [nextProject, setNextProject] = useState<any>(null);
-  
+
 
   useEffect(() => {
     const controlNavbar = () => {

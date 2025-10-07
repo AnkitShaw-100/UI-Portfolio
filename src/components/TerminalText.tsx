@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { TextCursor } from "lucide-react";
 
@@ -29,7 +28,7 @@ const TerminalText: React.FC<TerminalTextProps> = ({
     }
 
     const currentLine = textToType[currentLineIndex];
-    
+
     if (currentCharIndex >= currentLine.length) {
       // Finished typing current line
       const timeout = setTimeout(() => {
@@ -37,7 +36,7 @@ const TerminalText: React.FC<TerminalTextProps> = ({
         setCurrentCharIndex(0);
         setDisplayedText([...displayedText, ""]);
       }, 1000); // Pause before starting next line
-      
+
       return () => clearTimeout(timeout);
     }
 

@@ -1,4 +1,3 @@
-
 import React from "react";
 import { MapPin, Sparkles, BookOpen } from "lucide-react";
 

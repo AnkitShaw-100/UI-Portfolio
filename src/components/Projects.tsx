@@ -91,8 +91,8 @@ const ProjectCard = memo(({ project, index }: { project: Project; index: number 
         <div className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-4`}>
           <div
             className={`relative w-full md:w-[40%] p-4 md:p-6 flex flex-col justify-between rounded-xl overflow-hidden ${index % 2 === 0
-                ? 'bg-[#fafafa] text-gray-800'
-                : 'bg-[#3E40EF] text-white'
+              ? 'bg-[#fafafa] text-gray-800'
+              : 'bg-[#3E40EF] text-white'
               }`}
           >
             <div>
@@ -115,8 +115,8 @@ const ProjectCard = memo(({ project, index }: { project: Project; index: number 
                   <span
                     key={i}
                     className={`rounded-full px-2 py-1 text-xs font-medium ${index % 2 === 0
-                        ? 'bg-gray-100 text-gray-700'
-                        : 'bg-blue-100/20 text-white'
+                      ? 'bg-gray-100 text-gray-700'
+                      : 'bg-blue-100/20 text-white'
                       }`}
                   >
                     {tag}
@@ -238,10 +238,6 @@ const Projects = () => {
           repeatDelay={2}
           className="absolute inset-x-[60%] inset-y-[40%] w-[60%] h-[60%] -skew-y-12 text-[#3E40EF]/80 [mask-image:radial-gradient(600px_circle_at_center,white,transparent)]"
         />
-
-
-
-
 
         <div className="container-custom">
           <div className="mb-8 md:mb-12 text-center">

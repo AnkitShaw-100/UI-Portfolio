@@ -318,7 +318,7 @@ const Navbar = () => {
                         <Github size={20} />
                       </a>
                       <a
-                        href="https://www.behance.net/ankitshaw20"
+                        href="https://www.instagram.com/ankitshaw750/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"

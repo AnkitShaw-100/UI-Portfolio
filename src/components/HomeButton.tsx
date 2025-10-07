@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUp } from 'lucide-react';
@@ -12,13 +11,13 @@ const HomeButton = () => {
   useEffect(() => {
     // Find the footer element once on mount
     footerRef.current = document.querySelector('footer');
-    
+
     const toggleVisibility = () => {
       // Use debouncing to improve scroll performance
       if (scrollTimeoutRef.current) {
         window.cancelAnimationFrame(scrollTimeoutRef.current);
       }
-      
+
       scrollTimeoutRef.current = window.requestAnimationFrame(() => {
         if (window.scrollY > 300) {
           if (footerRef.current) {
@@ -36,7 +35,7 @@ const HomeButton = () => {
 
     // Run once on mount to set initial state
     toggleVisibility();
-    
+
     window.addEventListener('scroll', toggleVisibility, { passive: true });
     return () => {
       window.removeEventListener('scroll', toggleVisibility);

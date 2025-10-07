@@ -1,4 +1,3 @@
-
 import { AnimatePresence, motion, MotionProps } from "framer-motion";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
@@ -33,7 +32,7 @@ export function WordRotate({
   useEffect(() => {
     // Only set up the interval if the component is visible in the UI
     if (!isVisible) return;
-    
+
     const interval = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % words.length);
     }, duration);
@@ -49,12 +48,12 @@ export function WordRotate({
       },
       { threshold: 0.1 }
     );
-    
+
     const element = document.querySelector('.word-rotate-container');
     if (element) {
       observer.observe(element);
     }
-    
+
     // Additional check for menu state
     const checkMenuState = () => {
       // If there's an open mobile menu, pause rotation
@@ -65,14 +64,14 @@ export function WordRotate({
         setIsVisible(true);
       }
     };
-    
+
     // Run initial check
     checkMenuState();
-    
+
     // Also check when body style changes (menu opens/closes)
     const bodyObserver = new MutationObserver(checkMenuState);
     bodyObserver.observe(document.body, { attributes: true, attributeFilter: ['style'] });
-    
+
     return () => {
       if (element) {
         observer.unobserve(element);

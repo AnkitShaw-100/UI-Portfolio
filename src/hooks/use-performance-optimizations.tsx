@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 
 export function usePerformanceOptimizations() {
@@ -7,7 +6,7 @@ export function usePerformanceOptimizations() {
 
   useEffect(() => {
     if (hasOptimized.current) return;
-    
+
     const applyOptimizations = () => {
       // Add will-change hints to animations
       document.querySelectorAll(
@@ -17,24 +16,24 @@ export function usePerformanceOptimizations() {
           el.classList.add('will-change-transform');
         }
       });
-      
+
       // Add content-visibility to off-screen sections
       document.querySelectorAll('section:not(:first-child)').forEach((section) => {
         if (section instanceof HTMLElement) {
           section.classList.add('content-visibility-auto');
         }
       });
-      
+
       // Force hardware acceleration on navigation
       const navbar = document.querySelector('nav');
       if (navbar instanceof HTMLElement) {
         navbar.classList.add('gpu-accelerated');
       }
-      
+
       hasOptimized.current = true;
       setIsOptimized(true);
     };
-    
+
     if (document.readyState === 'complete') {
       applyOptimizations();
     } else {
