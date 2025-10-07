@@ -99,6 +99,7 @@ const ProjectDetail = () => {
   const { id } = useParams();
   const [project, setProject] = useState<any>(null);
   const [nextProject, setNextProject] = useState<any>(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
 
   useEffect(() => {
@@ -152,6 +153,9 @@ const ProjectDetail = () => {
     }
   ];
 
+  // determine if the provided project.image is a video asset
+  const isVideo = typeof project.image === 'string' && /\.(mp4|webm|ogg)$/i.test(project.image);
+
   return (
     <div className="min-h-screen bg-white text-black">
       <ProjectPageHeader />
@@ -163,30 +167,46 @@ const ProjectDetail = () => {
           <div className="w-full max-w-4xl mx-auto">
             <div className="overflow-hidden rounded-lg relative w-full">
               <div className="h-[55vh] md:h-[70vh] lg:h-[75vh] relative">
-                {project.image && project.image.toString().toLowerCase().endsWith('.mp4') ? (
-                  <div className="w-full h-full relative">
-                    <video
-                      controls
-                      muted
-                      playsInline
-                      autoPlay
-                      loop
-                      preload="metadata"
-                      poster={project.designElements?.[0] || project.finalDesign?.[0]}
+                <div className="w-full h-full relative">
+                  {/* Show a static poster/image until the video reports it's ready. This prevents
+                      the surrounding layout (like the Design Process/Resources) from shifting
+                      before the video is playable. */}
+                  {!isVideo && (
+                    <OptimizedImage
+                      src={project.image}
+                      alt={project.title}
                       className="absolute inset-0 w-full h-full object-cover"
-                      title={project.title}
-                    >
-                      <source src={project.image} type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-                  </div>
-                ) : (
-                  <OptimizedImage
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                  />
-                )}
+                    />
+                  )}
+
+                  {isVideo && (
+                    <>
+                      {!videoLoaded && (
+                        <OptimizedImage
+                          src={project.finalDesign?.[0]}
+                          alt={`${project.title} poster`}
+                          className="absolute inset-0 w-full h-full object-cover"
+                        />
+                      )}
+
+                      <video
+                        controls
+                        muted
+                        playsInline
+                        autoPlay
+                        loop
+                        preload="metadata"
+                        poster={project.finalDesign?.[0]}
+                        className={`absolute inset-0 w-full h-full object-cover ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
+                        title={project.title}
+                        onLoadedData={() => setVideoLoaded(true)}
+                      >
+                        <source src={project.image} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                    </>
+                  )}
+                </div>
 
                 <div className="absolute bottom-0 left-0 p-6 md:p-8 bg-gradient-to-t from-black/80 to-transparent w-full">
                   <motion.h1
