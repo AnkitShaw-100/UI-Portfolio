@@ -300,7 +300,7 @@ const Navbar = () => {
                   <div className="flex items-center justify-between mb-6 ">
                     <div className="flex space-x-10">
                       <a
-                        href="https://www.linkedin.com/in/adarshAnkit/"
+                        href="https://www.linkedin.com/in/ankit-shaw-884b0728a/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
@@ -309,7 +309,7 @@ const Navbar = () => {
                         <Linkedin size={20} />
                       </a>
                       <a
-                        href="https://github.com/Ankitspace"
+                        href="https://github.com/AnkitShaw-100"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
@@ -318,7 +318,7 @@ const Navbar = () => {
                         <Github size={20} />
                       </a>
                       <a
-                        href="https://www.instagram.com/Ankit__adarsh/"
+                        href="https://www.behance.net/ankitshaw20"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
@@ -328,7 +328,7 @@ const Navbar = () => {
                       </a>
                       {/* Add Behance icon here */}
                       <a
-                        href="https://www.behance.net/Ankitadarsh1"
+                        href="https://www.behance.net/ankitshaw20"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"

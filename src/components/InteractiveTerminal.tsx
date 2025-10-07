@@ -27,7 +27,7 @@ const InteractiveTerminal: React.FC<InteractiveTerminalProps> = ({ className = "
     "Interested in the conversation? Let's connect on linkedin!🚀 ",
     <a 
       key="linkedin" 
-      href="https://www.linkedin.com/in/adarshAnkit/" 
+      href="https://www.linkedin.com/in/ankit-shaw-884b0728a/" 
       className="underline hover:text-blue-600 transition-colors inline-flex items-center"  
       target="_blank"  
       rel="noopener noreferrer"
