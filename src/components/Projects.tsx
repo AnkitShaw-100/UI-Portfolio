@@ -4,7 +4,7 @@ import { BorderBeam, RainbowButton, WhiteRainbowButton } from "@/features/shared
 import { AnimatedGridPattern } from "@/components/AnimatedGridPattern";
 import { motion, LazyMotion, domAnimation, useInView } from "framer-motion";
 import { Link } from "react-router-dom";
-import { OptimizedImage } from "./OptimizedImage"; // <-- Add this import
+import { OptimizedImage } from "./OptimizedImage"; 
 
 interface Project {
   id: string;
@@ -114,11 +114,23 @@ const ProjectCard = memo(({ project, index }: { project: Project; index: number 
           </div>
           
           <div className="w-full md:w-[60%] h-[300px] sm:h-[400px] overflow-hidden rounded-xl md:mx-0 mt-2 md:mt-0 order-first md:order-none">
-            <OptimizedImage
-              src={project.image}
-              alt={project.title}
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 rounded-xl"
-            />
+            {project.image.endsWith('.mp4') ? (
+              <video
+                src={project.image}
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 rounded-xl"
+                autoPlay
+                loop
+                muted
+                playsInline
+                title={project.title}
+              />
+            ) : (
+              <OptimizedImage
+                src={project.image}
+                alt={project.title}
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 rounded-xl"
+              />
+            )}
           </div>
         </div>
       </motion.div>
@@ -135,7 +147,7 @@ const Projects = () => {
       title: "CSED VIT – Official Club Website",
       year: "2024",
       description: "Designed and developed a modern, interactive, and standout UI with a clean visual hierarchy, smooth transitions, and responsive layouts. Created an engaging user experience to reflect the club’s identity, events, and initiatives across all devices.",
-      image: "/images/csedm.webp",
+      image: "/images/web1.mp4",
       tags: ["UI Design", "UX Design", "Web Development"],
       link: "https://www.csedvit.com/",
     },
@@ -144,7 +156,7 @@ const Projects = () => {
       title: "Campus Mart – Your College Marketplace",
       year: "2025",
       description: "Discover a trusted marketplace built for students. Buy, sell, or exchange books, electronics, essentials, and more—all within your campus community. Easy to use, safe to connect, made for you.",
-      image: "/images/campusm.webp",
+      image: "/images/web2.mp4",
       tags: ["Product Design", "User Flow", "UI/UX"],
       link: "#",
     },
@@ -153,19 +165,10 @@ const Projects = () => {
       title: "CabSync – Ride Together",
       year: "2025",
       description: "Easily find and share cabs with fellow students heading to the same destination. Save money, travel safely, and reduce your carbon footprint—all in one tap.",
-      image: "/images/cabm.webp",
+      image: "/images/web3.mp4",
       tags: ["App UI/UX", "UI Design", "Prototyping"],
       link: "#",
-    },
-    {
-      id: "imaginum",
-      title: "Imaginum Website",
-      year: "2025",
-      description: "Portfolio-driven website for a tech-forward creative studio, built to highlight services, showcase work, and deliver a bold, engaging experience aligned with the studio’s vision and design philosophy.",
-      image: "/images/imagim.webp",
-      tags: ["UI/UX", "User Centric", "Saas WebDesign"],
-      link: "#",
-    },
+    }
   ];
 
   return (

@@ -52,38 +52,20 @@ const Posters = () => {
       id: 1,
       title: "CSED Website Launch",
       description: "Design and innovation come together in this launch poster.",
-      image: "/images/1.webp",
+      image: "/images/Landing1.png",
     },
     {
       id: 2,
       title: "Portfolio Launch Poster",
       description: "A clean and catchy design for portfolio launch poster",
-      image: "/images/poster1.webp",
+      image: "/images/Landing2.png",
     },
     {
       id: 3,
       title: "Sustainalbe Evet Poster",
       description: "Approaching problems with fun and creativity leads to unique and enjoyable solutions.",
-      image: "/images/poster4.webp",
-    },
-    {
-      id: 4,
-      title: "EVENT FLYERS",
-      description: "Code4Chnage Event poster for marketing.",
-      image: "/images/poster2.webp",
-    },
-    {
-      id: 5,
-      title: "Imaginum Flyers",
-      description: "Showcasing creativity, design, and innovative solutions.",
-      image: "/images/IMG2.webp",
-    },
-    {
-      id: 6,
-      title: "Event Announcement Poster",
-      description: "Campaign promoting environmental awareness",
-      image: "/images/poster3.webp",
-    },
+      image: "/images/Landing3.png",
+    }
   ];
 
   // Modified auto-scroll logic for better performance
@@ -126,7 +108,7 @@ const Posters = () => {
               {posters.map((poster, index) => (
                 <motion.div
                   key={index}
-                  className={`embla__slide flex-[0_0_80%] sm:flex-[0_0_70%] md:flex-[0_0_38%] lg:flex-[0_0_28%] px-1 md:px-2`}
+                  className={`embla__slide flex-[0_0_100%] sm:flex-[0_0_100%] md:flex-[0_0_76%] lg:flex-[0_0_65%] px-1 md:px-2`}
                   initial={{ scale: 0.9, opacity: 0.5 }}
                   animate={{
                     scale: activeIndex === index ? 1 : 0.9,
@@ -134,12 +116,14 @@ const Posters = () => {
                   }}
                   transition={{ duration: 0.4 }}
                 >
-                  <div className="group relative aspect-[3/4] rounded-lg md:rounded-xl overflow-hidden bg-white shadow-md hover:shadow-lg transition-all duration-500 mx-0.5 md:mx-1">
-                    <OptimizedImage
-                      src={poster.image}
-                      alt={poster.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
+                  <div className="group relative aspect-[4/3] md:aspect-[4/3] lg:aspect-[3/2] rounded-lg md:rounded-xl overflow-hidden bg-gray-50 shadow-md hover:shadow-lg transition-all duration-500 mx-0.5 md:mx-1">
+                    <div className="w-full h-full flex items-center justify-center">
+                      <OptimizedImage
+                        src={poster.image}
+                        alt={poster.title}
+                        className="max-w-full max-h-full object-contain object-center transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4">
                         <h4 className="font-semibold text-white text-base md:text-lg mb-1 md:mb-2">
